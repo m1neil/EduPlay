@@ -1,0 +1,224 @@
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+	// .header__container
+	&__container {
+		// min-height: toRem(75);
+		min-height: toRem(75);
+		padding-block: toRem(10);
+		display: flex;
+		align-items: center;
+		// column-gap: toRem(50);
+		@include adaptiveValue("column-gap", 50, 30, 0, $containerWidth, 768);
+		@media (max-width: $mobile) {
+			justify-content: space-between;
+			min-height: toRem(57);
+		}
+	}
+	// .header__logo
+	&__logo {
+		position: relative;
+		z-index: 1;
+		width: toRem(105);
+		flex-shrink: 0;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
+		img {
+			width: 100%;
+		}
+	}
+	// .header__menu
+	&__menu {
+		flex-grow: 1;
+	}
+	// .header__actions
+	&__actions {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		gap: toRem(12);
+		flex-wrap: wrap;
+		@media (max-width: $mobile) {
+			justify-content: flex-end;
+		}
+	}
+	// .header__link
+	&__link {
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
+	}
+	// .header__icon-menu
+	&__icon-menu {
+	}
+}
+.menu {
+	@media (max-width: $mobile) {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		right: -100%;
+		background-color: #fff;
+		padding: toRem(65) toRem(15) toRem(30);
+		overflow-y: auto;
+		transition:
+			right 0.3s,
+			opacity 0.3s,
+			visibility 0.3s;
+		opacity: 0;
+		visibility: hidden;
+		&::after {
+			content: "";
+			position: fixed;
+			width: 100%;
+			height: toRem(57);
+			top: 0;
+			right: -100%;
+			background-color: #fff;
+			opacity: 0;
+			transition:
+				right 0.3s,
+				opacity 0.3s;
+		}
+		.menu-open & {
+			right: 0;
+			opacity: 1;
+			visibility: visible;
+			&::after {
+				right: 0;
+				opacity: 1;
+			}
+		}
+	}
+	// .menu__body
+	&__body {
+		@media (min-width: $mobile) {
+			display: flex;
+			justify-content: flex-end;
+			flex-wrap: wrap;
+			column-gap: toRem(48);
+			row-gap: toRem(5);
+			@include adaptiveValue("column-gap", 48, 25, 0, $containerWidth, 768);
+		}
+		@media (max-width: $mobile) {
+			&:not(:last-child) {
+				margin-bottom: toRem(25);
+			}
+		}
+	}
+	// .menu__item
+	&__item {
+		@media (max-width: $mobile) {
+			text-align: right;
+			&:not(:last-child) {
+				margin-bottom: toRem(15);
+			}
+		}
+	}
+	// .menu__link
+	&__link {
+		color: $darkColor;
+		font-size: toRem(16);
+		font-weight: 500;
+		line-height: 1.4;
+		transition:
+			font-weight 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
+		@media (any-hover: hover) {
+			position: relative;
+			&::after {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: toRem(1);
+				bottom: 0;
+				right: 0;
+				background-color: $darkColor;
+				transition: width 0.3s;
+			}
+			&:hover {
+				&::after {
+					width: 100%;
+					right: auto;
+					left: 0;
+				}
+			}
+		}
+		@media (max-width: $mobile) {
+			font-size: toRem(24);
+		}
+	}
+}
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		flex-shrink: 0;
+		width: toRem(32);
+		height: toRem(23);
+
+		span,
+		&::before,
+		&::after {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: toRem(3);
+			background-color: #fff;
+			background-color: $darkColor;
+			transition: all 0.3s;
+		}
+
+		&::before,
+		&::after {
+			content: "";
+		}
+
+		span {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+
+		.menu-open & {
+			span {
+				transform: scale(0.01, 1) translateY(-50%);
+			}
+			&::before {
+				top: toRem(10);
+				transform: rotate(45deg);
+			}
+			&::after {
+				transform: rotate(-45deg);
+				bottom: toRem(10);
+			}
+		}
+	}
+}

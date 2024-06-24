@@ -46,6 +46,13 @@
 	// .top-footer__logo
 	&__logo {
 		width: toRem(105);
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		img {
 			width: 100%;
 		}
@@ -67,7 +74,15 @@
 	}
 	// .top-footer__app
 	&__app {
-		transition: transform 0.3s;
+		transition:
+			transform 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		img {
 			max-width: 100%;
 		}
@@ -114,7 +129,7 @@
 	// .column-top-footer__item
 	&__item {
 		&:not(:last-child) {
-			margin-bottom: toRem(23);
+			margin-bottom: toRem(25);
 		}
 	}
 	// .column-top-footer__link
@@ -122,8 +137,16 @@
 		color: #48555f;
 		font-size: toRem(14);
 		font-weight: 600;
-		line-height: 1.71; /* 171.429% */
-		transition: color 0.3s;
+		line-height: 1.3; /* 171.429% */
+		transition:
+			color 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: $hoverColor;
@@ -146,6 +169,13 @@
 	&__link {
 		display: flex;
 		column-gap: toRem(10);
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		&:not(:last-child) {
 			margin-bottom: toRem(24);
 		}
@@ -228,8 +258,15 @@
 	&__link {
 		font-size: toRem(14);
 		font-weight: 600;
-		line-height: 1.71; /* 171.429% */
+		line-height: 1.4;
 		transition: color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: $hoverColor;

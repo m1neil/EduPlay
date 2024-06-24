@@ -23,6 +23,9 @@ body {
 	font-size: $fontSize;
 	color: $mainColor;
 	font-family: $fontFamily, sans-serif;
+	.lock & {
+		overflow: hidden;
+	}
 }
 
 // Мінімальна ширина сторінки
@@ -46,6 +49,13 @@ $mobileSmall: toEm(479.98);
 	max-width: toRem($containerWidth);
 	margin-inline: auto;
 	padding-inline: toRem(15);
+}
+
+.page {
+	padding-top: toRem(75);
+	@media (max-width: $mobile) {
+		padding-top: toRem(57);
+	}
 }
 
 @import "common";

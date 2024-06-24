@@ -2,6 +2,7 @@
 
 window.addEventListener('DOMContentLoaded', () => {
 	initRating();
+	initIconMenu();
 });
 
 function initRating() {
@@ -15,3 +16,11 @@ function initRating() {
 	}
 }
 
+function initIconMenu() {
+	const iconMenu = document.querySelector('.icon-menu');
+	if (!iconMenu) return;
+	iconMenu.addEventListener('click', () => {
+		document.documentElement.classList.toggle('menu-open');
+		document.documentElement.classList.toggle('lock');
+	});
+}
