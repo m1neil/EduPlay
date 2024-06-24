@@ -17,7 +17,7 @@
 	}
 	// .top-footer__container
 	&__container {
-		@media (min-width: toEm(699.98)) {
+		@media (min-width: $mobile) {
 			display: flex;
 			justify-content: space-between;
 			column-gap: toRem(30);
@@ -27,10 +27,8 @@
 	&__content {
 		@media (min-width: $mobile) {
 			flex-basis: toRem(400);
-			min-width: toRem(293);
 		}
 		@media (max-width: $mobile) {
-			max-width: toRem(400);
 			&:not(:last-child) {
 				margin-bottom: toRem(40);
 			}
@@ -68,45 +66,22 @@
 	}
 	// .top-footer__apps
 	&__apps {
-		display: flex;
-		flex-wrap: wrap;
-		gap: toRem(10) toRem(12);
 	}
-	// .top-footer__app
-	&__app {
-		transition:
-			transform 0.3s,
-			outline-color 0.3s;
-		outline: toRem(2) solid transparent;
-		outline-offset: toRem(3);
-		border-radius: toRem(2);
-		&:focus-visible {
-			outline-color: $activeColor;
-		}
-		img {
-			max-width: 100%;
-		}
-		@media (any-hover: hover) {
-			&:hover {
-				transform: scale(1.02);
-			}
-		}
-	}
+
 	// .top-footer__menu
 	&__menu {
-		@media (min-width: $mobile) {
-			justify-content: flex-end;
-		}
 		flex-shrink: 0;
-		display: flex;
-		flex-wrap: wrap;
-		@media (min-width: toEm(699.98)) {
-			@include adaptiveValue("column-gap", 100, 40, 0, $containerWidth, 768);
-		}
-		@media (max-width: toEm(699.98)) {
-			column-gap: toRem(60);
-		}
+		display: grid;
+		grid-template-columns: repeat(3, minmax(auto, toRem(125)));
+		@include adaptiveValue("column-gap", 90, 30, 0, $containerWidth, 768);
 		row-gap: toRem(40);
+
+		@media (max-width: $mobile) {
+			column-gap: toRem(50);
+		}
+		@media (max-width: toEm(539.98)) {
+			grid-template-columns: repeat(2, minmax(auto, toRem(125)));
+		}
 	}
 	// .top-footer__column
 	&__column {
@@ -219,7 +194,7 @@
 			justify-content: space-between;
 			column-gap: toRem(30);
 			row-gap: toRem(15);
-			flex-wrap: wrap;
+			// flex-wrap: wrap;
 		}
 		&::before {
 			content: "";
@@ -234,12 +209,10 @@
 	}
 	// .bottom-footer__list
 	&__list {
-		@media (min-width: toEm(374.98)) {
-			display: flex;
-			flex-wrap: wrap;
-			column-gap: toRem(30);
-			row-gap: toRem(15);
-		}
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: toRem(30);
+		row-gap: toRem(15);
 		@media (max-width: toEm(660.98)) {
 			&:not(:last-child) {
 				margin-bottom: toRem(20);
@@ -248,11 +221,6 @@
 	}
 	// .bottom-footer__item
 	&__item {
-		@media (max-width: toEm(374.98)) {
-			&:not(:last-child) {
-				margin-bottom: toRem(15);
-			}
-		}
 	}
 	// .bottom-footer__link
 	&__link {
@@ -281,6 +249,7 @@
 	}
 	// .bottom-footer__copy
 	&__copy {
+		flex-shrink: 0;
 		font-size: toRem(14);
 		font-weight: 600;
 		line-height: 1.71; /* 171.429% */

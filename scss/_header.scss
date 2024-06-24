@@ -40,12 +40,8 @@
 		flex-grow: 1;
 	}
 	// .header__actions
-	&__actions {
+	&__apps {
 		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		gap: toRem(12);
-		flex-wrap: wrap;
 		@media (max-width: $mobile) {
 			justify-content: flex-end;
 		}
@@ -169,6 +165,7 @@
 		}
 	}
 }
+// .icon-menu =====================================================================
 .icon-menu {
 	display: none;
 	@media (max-width: $mobile) {

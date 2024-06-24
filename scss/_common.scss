@@ -301,3 +301,31 @@
 		}
 	}
 }
+
+// Apps =====================================================================
+.apps {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: toRem(10) toRem(12);
+	// .top-footer__item
+	&__item {
+		transition:
+			transform 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
+		img {
+			max-width: 100%;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.02);
+			}
+		}
+	}
+}
