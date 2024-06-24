@@ -1,0 +1,303 @@
+// Benefit =====================================================================
+.item-benefit {
+	> * {
+		margin-bottom: toRem(16);
+	}
+	> *:last-child {
+		margin-bottom: 0;
+	}
+	@media (max-width: toEm(600)) {
+		text-align: center;
+	}
+	// .item-benefit__icon
+	&__icon {
+		width: toRem(110);
+		height: toRem(105);
+		object-fit: contain;
+		@media (max-width: toEm(600)) {
+			width: toRem(75);
+			height: toRem(72);
+		}
+	}
+	// .item-benefit__title
+	&__title {
+		color: $darkColor;
+		font-weight: 700;
+		font-size: toRem(24);
+		line-height: 1.33;
+		@media (max-width: toEm(600)) {
+			font-size: toRem(20);
+		}
+	}
+	// .item-benefit__text
+	&__text {
+		font-size: toRem(16);
+		font-weight: 500;
+		line-height: 1.56;
+		letter-spacing: toRem(0.08);
+		p:not(:last-child) {
+			margin-bottom: toRem(7);
+		}
+	}
+}
+
+// Link =====================================================================
+.link {
+	background-color: $purpleColor;
+	padding: toRem(15) toRem(20);
+	color: #fff;
+	font-size: toRem(16);
+	font-weight: 700;
+	line-height: 1.2;
+	border-radius: toRem(8);
+	transition: background-color 0.5s;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: $hoverColor;
+		}
+	}
+	&:active {
+		background-color: $activeColor;
+	}
+	// .link--icon
+	&--icon {
+		display: inline-flex;
+		column-gap: toRem(7);
+		background-color: #f0f0f2;
+		color: $darkColor;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #dcdcdc;
+			}
+		}
+		&:active {
+			background-color: #b7b7b7;
+		}
+		&::before {
+			content: "";
+			margin-top: toRem(1);
+			width: toRem(15);
+			height: toRem(15);
+			background: url("../img/icons/books.png") 0 0 / 100% no-repeat;
+		}
+	}
+}
+
+// .card-slide =====================================================================
+.card-slide {
+	border-radius: toRem(12);
+	background-color: #fbfbfd;
+	box-shadow: 0 toRem(4) toRem(8) 0 rgba(0, 0, 0, 0.05);
+	// .card-slide__image
+	&__image {
+		display: block;
+		overflow: hidden;
+		border-radius: toRem(12) toRem(12) 0 0;
+		img {
+			width: 100%;
+			object-fit: cover;
+			aspect-ratio: 390 / 290;
+			transition: transform 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					transform: scale(1.03);
+				}
+			}
+		}
+	}
+	// .card-slide__body
+	&__body {
+		padding: toRem(10) toRem(22) toRem(24);
+		> * {
+			margin-bottom: toRem(10);
+		}
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+	// .card-slide__title
+	&__title {
+		color: $darkColor;
+		font-size: toRem(30);
+		font-weight: 700;
+		line-height: 1.36;
+		transition: color 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $hoverColor;
+			}
+		}
+		&:active {
+			color: $activeColor;
+		}
+		@media (max-width: toEm(600)) {
+			font-size: toRem(24);
+		}
+	}
+	// .card-slide__key-words
+	&__key-words {
+		display: flex;
+		gap: toRem(14);
+		flex-wrap: wrap;
+		margin-bottom: toRem(35);
+		@media (max-width: toEm(600)) {
+			gap: toRem(12);
+		}
+	}
+	// .card-slide__key-word
+	&__key-word {
+		border-radius: toRem(6);
+		background-color: rgba(0, 196, 204, 0.1);
+		padding: toRem(6) toRem(10);
+		font-size: toRem(15);
+		font-weight: 700;
+		line-height: 1.6;
+		color: #00a1a7;
+		@media (max-width: toEm(600)) {
+			padding: toRem(5) toRem(8);
+			font-size: toRem(12);
+		}
+	}
+	// .card-slide__all
+	&__all {
+		font-size: toRem(16);
+		font-weight: 700;
+		line-height: 1.5;
+		color: $purpleColor;
+		position: relative;
+		transition: color 0.3s;
+		@media (any-hover: hover) {
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: toRem(1);
+				bottom: toRem(1);
+				right: 0;
+				background-color: $purpleColor;
+				transition:
+					width 0.3s,
+					background-color 0.3s;
+			}
+			&:hover {
+				color: $hoverColor;
+				&::before {
+					width: 0;
+					background-color: $hoverColor;
+				}
+			}
+		}
+		&:active {
+			color: $activeColor;
+		}
+	}
+}
+
+// .rating =====================================================================
+.rating {
+	display: inline-block;
+	position: relative;
+	width: toRem(100);
+	line-height: 0;
+	font-size: 0;
+	@media (max-width: toEm(600)) {
+		width: toRem(92);
+	}
+	// .rating__active
+	&__active {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		line-height: 0;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			width: toRem(100);
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: url("../img/icons/active-star.svg") 0 0 / 100% no-repeat;
+			@media (max-width: toEm(600)) {
+				width: toRem(92);
+			}
+		}
+	}
+	// .rating__field
+	&__field {
+		width: 100%;
+	}
+}
+
+// .card-review =====================================================================
+.card-review {
+	border-radius: toRem(12);
+	background-color: #fff;
+	box-shadow: 0 toRem(4) toRem(8) 0 rgba(0, 0, 0, 0.05);
+	padding: toRem(30);
+	color: $darkColor;
+	@media (max-width: toEm(600)) {
+		padding: toRem(26);
+	}
+	// .card-review__quotes
+	&__quotes {
+		width: toRem(40);
+		&:not(:last-child) {
+			margin-bottom: toRem(24);
+		}
+		@media (max-width: toEm(600)) {
+			width: toRem(35);
+			&:not(:last-child) {
+				margin-bottom: toRem(20);
+			}
+		}
+	}
+	// .card-review__text
+	&__text {
+		font-size: toRem(18);
+		font-weight: 500;
+		line-height: 1.5;
+		letter-spacing: toRem(0.09);
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+		p:not(:last-child) {
+			margin-bottom: toRem(7);
+		}
+		@media (max-width: toEm(600)) {
+			font-size: toRem(15);
+			font-weight: 500;
+			&:not(:last-child) {
+				margin-bottom: toRem(17);
+			}
+		}
+	}
+	// .card-review__bottom
+	&__bottom {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		column-gap: toRem(13);
+		row-gap: toRem(7);
+		justify-content: space-between;
+	}
+	// .card-review__user
+	&__user {
+		font-size: toRem(18);
+		font-weight: 700;
+		line-height: 1.38;
+		@media (max-width: toEm(600)) {
+			font-size: toRem(16);
+		}
+	}
+	// .card-review__rating
+	&__rating {
+		margin-top: toRem(2);
+		flex-shrink: 0;
+		@media (max-width: toEm(600)) {
+			margin-top: toRem(3);
+		}
+	}
+}
