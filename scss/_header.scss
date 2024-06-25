@@ -4,6 +4,8 @@
 	top: 0;
 	left: 0;
 	z-index: 50;
+	background-color: #fff;
+	box-shadow: 0 toRem(14) toRem(24) 0 rgba(0, 0, 0, 0.01);
 	// .header__container
 	&__container {
 		// min-height: toRem(75);

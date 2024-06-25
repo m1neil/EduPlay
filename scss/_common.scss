@@ -51,6 +51,10 @@
 	line-height: 1.2;
 	border-radius: toRem(8);
 	transition: background-color 0.5s;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: $hoverColor;
@@ -61,7 +65,6 @@
 	}
 	// .link--icon
 	&--icon {
-		display: inline-flex;
 		column-gap: toRem(7);
 		background-color: #f0f0f2;
 		color: $darkColor;
@@ -75,6 +78,7 @@
 		}
 		&::before {
 			content: "";
+			flex-shrink: 0;
 			margin-top: toRem(1);
 			width: toRem(15);
 			height: toRem(15);
@@ -195,7 +199,6 @@
 
 // .rating =====================================================================
 .rating {
-	display: inline-block;
 	position: relative;
 	width: toRem(100);
 	line-height: 0;
