@@ -1,3 +1,4 @@
+// .promo =====================================================================
 .promo {
 	// .promo__container
 	&__container {
@@ -109,6 +110,7 @@
 	}
 }
 
+// .evaluation-promo =====================================================================
 .evaluation-promo {
 	display: flex;
 	align-items: center;
@@ -131,6 +133,7 @@
 	}
 }
 
+// .decoration-promo =====================================================================
 .decoration-promo {
 	position: absolute;
 	width: percent(469, $containerWidth);
@@ -203,5 +206,55 @@
 	}
 	100% {
 		background-position: 100% 0;
+	}
+}
+
+// .benefits  =====================================================================
+.benefits {
+	padding-block: toRem(85);
+	background: url("../img/benefits/texture-bg.png") center / cover no-repeat;
+	@media (max-width: $tablet) {
+		padding-block: toRem(57);
+	}
+	// .benefits__container
+	&__container {
+	}
+	// .benefits__items
+	&__items {
+		padding-block: toRem(45);
+		padding-inline: toRem(48);
+		border-radius: toRem(12);
+		background-color: #fff;
+		@media (min-width: toEm(599.98)) {
+			display: flex;
+			justify-content: center;
+			@include adaptiveValue("column-gap", 99, 30, 0, $containerWidth, 800);
+			row-gap: toRem(70);
+		}
+
+		@media (max-width: $tablet) {
+			padding-inline: toRem(25);
+		}
+		@media (max-width: $mobile) {
+			flex-wrap: wrap;
+		}
+		@media (max-width: toEm(599.98)) {
+			padding-block: toRem(32);
+			padding-inline: toRem(10);
+		}
+	}
+	// .benefits__item
+	&__item {
+		flex: 1 1 toRem(240);
+		@media (max-width: $mobile) {
+			&:first-child {
+				flex-basis: 100%;
+			}
+		}
+		@media (max-width: toEm(599.98)) {
+			&:not(:last-child) {
+				margin-bottom: toRem(80);
+			}
+		}
 	}
 }
