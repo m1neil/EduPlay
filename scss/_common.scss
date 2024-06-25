@@ -44,7 +44,7 @@
 // Link =====================================================================
 .link {
 	background-color: $purpleColor;
-	padding: toRem(15) toRem(20);
+	padding: toRem(14) toRem(20);
 	color: #fff;
 	font-size: toRem(16);
 	font-weight: 700;
@@ -79,7 +79,7 @@
 		&::before {
 			content: "";
 			flex-shrink: 0;
-			margin-top: toRem(1);
+			margin-top: toRem(-1);
 			width: toRem(15);
 			height: toRem(15);
 			background: url("../img/icons/books.png") 0 0 / 100% no-repeat;
