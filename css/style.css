@@ -1067,13 +1067,11 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.4;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
   outline: 0.125rem solid transparent;
   outline-offset: 0.25rem;
   border-radius: 0.125rem;
-  -webkit-transition: outline-color 0.3s;
-  transition: outline-color 0.3s;
+  -webkit-transition: outline-color 0.3s, color 0.3s;
+  transition: outline-color 0.3s, color 0.3s;
 }
 .bottom-footer__link:focus-visible {
   outline-color: #7921ed;
@@ -1105,16 +1103,11 @@ body {
 }
 
 .promo {
-  padding-block: 4.375rem 6.5625rem;
-}
-@media (max-width: 61.99875em) {
-  .promo {
-    padding-block: 3.75rem;
-  }
+  padding-block: 2.875rem 0.875rem;
 }
 @media (max-width: 47.99875em) {
   .promo {
-    padding-block: 1.875rem 0;
+    padding-block: 2.8125rem 0;
   }
 }
 @media (min-width: 47.99875em) {
@@ -1142,18 +1135,18 @@ body {
 }
 @media (min-width: 47.99875em) and (min-width: 79.375em) {
   .promo__content {
-    padding-top: 5.0625rem;
+    padding-top: 5.625rem;
   }
 }
 @media (min-width: 47.99875em) and (min-width: 48em) and (max-width: 79.375em) {
-  @supports (padding-top: clamp( 0.0000000625rem , -7.7450197622rem  +  16.1354579681vw , 5.0625rem )) {
+  @supports (padding-top: clamp( 0.0000000625rem , -8.6055775311rem  +  17.9282866534vw , 5.625rem )) {
     .promo__content {
-      padding-top: clamp( 0.0000000625rem , -7.7450197622rem  +  16.1354579681vw , 5.0625rem );
+      padding-top: clamp( 0.0000000625rem , -8.6055775311rem  +  17.9282866534vw , 5.625rem );
     }
   }
-  @supports not (padding-top: clamp( 0.0000000625rem , -7.7450197622rem  +  16.1354579681vw , 5.0625rem )) {
+  @supports not (padding-top: clamp( 0.0000000625rem , -8.6055775311rem  +  17.9282866534vw , 5.625rem )) {
     .promo__content {
-      padding-top: calc(0.0000000625rem + 5.0624999375 * (100vw - 48rem) / 31.375);
+      padding-top: calc(0.0000000625rem + 5.6249999375 * (100vw - 48rem) / 31.375);
     }
   }
 }

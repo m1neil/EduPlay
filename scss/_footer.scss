@@ -227,11 +227,12 @@
 		font-size: toRem(14);
 		font-weight: 600;
 		line-height: 1.4;
-		transition: color 0.3s;
 		outline: toRem(2) solid transparent;
 		outline-offset: toRem(4);
 		border-radius: toRem(2);
-		transition: outline-color 0.3s;
+		transition:
+			outline-color 0.3s,
+			color 0.3s;
 		&:focus-visible {
 			outline-color: $activeColor;
 		}

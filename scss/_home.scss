@@ -1,10 +1,7 @@
 .promo {
-	padding-block: toRem(70) toRem(105);
-	@media (max-width: $tablet) {
-		padding-block: toRem(60);
-	}
+	padding-block: toRem(46) toRem(14);
 	@media (max-width: $mobile) {
-		padding-block: toRem(30) 0;
+		padding-block: toRem(45) 0;
 	}
 	// .promo__container
 	&__container {
@@ -20,7 +17,7 @@
 		@media (min-width: $mobile) {
 			flex-basis: toRem(600);
 			min-width: toRem(374);
-			@include adaptiveValue("padding-top", 81, 0, 0, $containerWidth, 768);
+			@include adaptiveValue("padding-top", 90, 0, 0, $containerWidth, 768);
 		}
 		@media (max-width: $mobile) {
 			margin-bottom: toRem(47);
