@@ -45,8 +45,8 @@
 			color: transparent;
 			background-image: $gradientColor;
 			background-clip: text;
-			animation: moveGradient 2s infinite linear alternate;
-			background-size: 200%;
+			animation: moveGradient 4s infinite linear;
+			background-size: 400% 400%;
 		}
 	}
 	// .promo__text
@@ -202,10 +202,13 @@
 
 @keyframes moveGradient {
 	0% {
-		background-position: 0 0;
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
 	}
 	100% {
-		background-position: 100% 0;
+		background-position: 0 50%;
 	}
 }
 
@@ -254,6 +257,210 @@
 		@media (max-width: toEm(599.98)) {
 			&:not(:last-child) {
 				margin-bottom: toRem(80);
+			}
+		}
+	}
+}
+
+//=====================================================================
+.application {
+	position: relative;
+	@include adaptiveValue("padding-block", 100, 40, 0, $containerWidth, 575);
+	background-color: #fbfbfd;
+	// .application__container
+	&__container {
+		@media (min-width: toEm(699.98)) {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			column-gap: toRem(40);
+		}
+	}
+	// .application__content
+	&__content {
+		flex: 0 1 toRem(600);
+		> * {
+			margin-bottom: toRem(24);
+		}
+		> *:last-child {
+			margin-bottom: 0;
+		}
+		@media (max-width: toEm(699.98)) {
+			> * {
+				margin-bottom: toRem(16);
+			}
+			&:not(:last-child) {
+				margin-bottom: toRem(40);
+			}
+		}
+	}
+	// .application__title
+	&__title {
+		br {
+			display: none;
+			@media (min-width: toEm(699.98)) {
+				display: inline;
+			}
+		}
+	}
+	// .application__text
+	&__text {
+		margin-bottom: toRem(32);
+		@media (max-width: $mobile) {
+			margin-bottom: toRem(24);
+		}
+	}
+	// .application__list
+	&__list {
+		counter-reset: step;
+		margin-bottom: toRem(40);
+		@media (max-width: $mobile) {
+			margin-bottom: toRem(30);
+		}
+	}
+	// .application__item
+	&__item {
+		display: flex;
+		column-gap: toRem(22);
+		align-items: center;
+		color: $darkColor;
+		line-height: 1.6;
+		font-weight: 600;
+		&:not(:last-child) {
+			margin-bottom: toRem(32);
+			@media (max-width: $tablet) {
+				margin-bottom: toRem(24);
+			}
+		}
+		@media (max-width: $mobile) {
+			font-size: toRem(16);
+			column-gap: toRem(11);
+		}
+		&::before {
+			content: counter(step);
+			counter-increment: (step);
+			align-self: flex-start;
+			width: toRem(42);
+			height: toRem(42);
+			flex-shrink: 0;
+			border-radius: 50%;
+			background-image: $gradientColor;
+			color: #fff;
+			font-size: toRem(22);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			@media (max-width: $mobile) {
+				font-size: toRem(16);
+				width: toRem(29);
+				height: toRem(29);
+			}
+		}
+	}
+	// .application__apps
+	&__apps {
+		@media (max-width: toEm(699.98)) {
+			.apps__item--lg {
+				height: toRem(42);
+			}
+		}
+	}
+	// .application__picture
+	&__picture {
+		position: relative;
+		flex: 0 1 toRem(452);
+		padding-right: toRem(43);
+		@media (max-width: $tablet) {
+			padding-right: 0;
+		}
+		@media (max-width: toEm(699.98)) {
+			width: 89.23%;
+			margin: 0 auto;
+		}
+	}
+	&__img-wrapper {
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			width: calc(100% - toRem(8));
+			height: calc(100% - toRem(5));
+			top: 0;
+			left: toRem(3);
+			border-radius: 16% 13% 13% 13% / 9% 13% 13% 13%;
+			box-shadow:
+				toRem(-0.1) toRem(0.4) toRem(2.4) rgba(0, 0, 0, 0.219),
+				toRem(-0.4) toRem(1.5) toRem(12.2) rgba(0, 0, 0, 0.24),
+				toRem(-7) toRem(27) toRem(102) rgba(0, 0, 0, 0.5);
+		}
+	}
+	// .application__image
+	&__image {
+		width: 100%;
+		object-fit: contain;
+		position: relative;
+		z-index: 1;
+	}
+	// .application__decoration
+	&__decoration {
+		position: absolute;
+		width: percent(136, 452);
+		aspect-ratio: 136 / 140;
+		object-fit: contain;
+		top: percent(-20, 452);
+		right: percent(-20, 452);
+		@media (max-width: toEm(699.98)) {
+			width: percent(103, 308);
+			top: percent(-13, 308);
+			right: percent(-19, 308);
+		}
+	}
+	// .application__line-decor
+	&__line-decor {
+	}
+}
+
+//=====================================================================
+
+.line-decor {
+	display: none;
+	@media (min-width: $mobile) {
+		display: block;
+		position: absolute;
+		width: toRem(173);
+		height: toRem(50);
+		top: toRem(56);
+		left: toRem(-36);
+		transform: rotate(12.24deg);
+		@media (max-width: toEm(1458)) {
+			width: toRem(120);
+			top: toRem(25);
+		}
+		@media (max-width: $tablet) {
+			width: toRem(90);
+		}
+		// .line-decor__item
+		&__item {
+			&:not(:last-child) {
+				margin-bottom: toRem(15);
+			}
+			width: 100%;
+			height: toRem(1);
+			&:nth-child(odd) {
+				background-color: $purpleColor;
+			}
+			&:nth-child(even) {
+				background-color: $oceanColor;
+			}
+
+			&:nth-child(2) {
+				width: calc(100% - toRem(20));
+			}
+			&:nth-child(3) {
+				width: calc(100% - toRem(32));
+			}
+			&:nth-child(4) {
+				width: calc(100% - toRem(83));
 			}
 		}
 	}
