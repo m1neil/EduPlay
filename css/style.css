@@ -1800,17 +1800,28 @@ body {
 }
 .explorer-courses__container {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-column-gap: 1.875rem;
-     -moz-column-gap: 1.875rem;
-          column-gap: 1.875rem;
   padding-block: 2.5rem;
-  background: url("../img/explore-courses/decorations/");
+}
+@media (min-width: 43.74875em) {
+  .explorer-courses__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-column-gap: 1.875rem;
+       -moz-column-gap: 1.875rem;
+            column-gap: 1.875rem;
+  }
+}
+@media (max-width: 47.99875em) {
+  .explorer-courses__container {
+    padding-block: 2.1875rem;
+  }
 }
 .explorer-courses__content {
   -ms-flex-preferred-size: 37.5rem;
@@ -1836,18 +1847,37 @@ body {
 .explorer-courses__link::before {
   background-image: url("../img/icons/hat.png");
 }
+@media (max-width: 29.99875em) {
+  .explorer-courses__link {
+    width: 100%;
+  }
+}
 .explorer-courses__picture {
-  padding-right: 2.8125rem;
-  -ms-flex-preferred-size: 32rem;
-      flex-basis: 32rem;
   position: relative;
   z-index: 1;
+}
+@media (min-width: 79.375em) {
+  .explorer-courses__picture {
+    padding-right: 2.8125rem;
+  }
+}
+@media (min-width: 43.74875em) {
+  .explorer-courses__picture {
+    -ms-flex-preferred-size: 32rem;
+        flex-basis: 32rem;
+  }
 }
 .explorer-courses__picture img {
   width: 100%;
   aspect-ratio: 467/450;
   -o-object-fit: contain;
      object-fit: contain;
+}
+@media (max-width: 43.74875em) {
+  .explorer-courses__picture img {
+    width: 91.3043478261%;
+    aspect-ratio: 315/302;
+  }
 }
 .decoration-explorer-courses {
   position: absolute;
@@ -1861,59 +1891,122 @@ body {
   position: absolute;
 }
 .decoration-explorer-courses__item--5 {
-  width: 3.1496062992%;
-  top: 41.1320754717%;
-  left: 19.9212598425%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--5 {
+    display: block;
+    width: 3.1496062992%;
+    top: 41.1320754717%;
+    left: 19.9212598425%;
+  }
 }
 .decoration-explorer-courses__item--8 {
-  width: 1.968503937%;
-  top: -3.3962264151%;
-  left: 22.4409448819%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--8 {
+    display: block;
+    width: 1.968503937%;
+    top: -3.3962264151%;
+    left: 22.4409448819%;
+  }
 }
 .decoration-explorer-courses__item--0 {
-  width: 2.0472440945%;
-  top: auto;
-  bottom: 0;
-  left: 25.5118110236%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--0 {
+    display: block;
+    width: 2.0472440945%;
+    top: auto;
+    bottom: 0;
+    left: 25.5118110236%;
+  }
 }
 .decoration-explorer-courses__item--o {
   width: 1.8897637795%;
   top: 17.9245283019%;
   left: 42.0472440945%;
 }
+@media (max-width: 43.74875em) {
+  .decoration-explorer-courses__item--o {
+    width: 5.7971014493%;
+    left: auto;
+    right: 0.9375rem;
+    top: 62.3359580052%;
+  }
+}
 .decoration-explorer-courses__item--x {
-  width: 3.5433070866%;
-  top: 1.8867924528%;
-  left: 43.3070866142%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--x {
+    display: block;
+    width: 3.5433070866%;
+    top: 1.8867924528%;
+    left: 43.3070866142%;
+  }
 }
 .decoration-explorer-courses__item--m {
-  width: 2.3622047244%;
-  top: auto;
-  bottom: 5.6603773585%;
-  left: 45.905511811%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--m {
+    display: block;
+    width: 2.3622047244%;
+    top: auto;
+    bottom: 5.6603773585%;
+    left: 45.905511811%;
+  }
 }
 .decoration-explorer-courses__item--p {
-  width: 1.811023622%;
+  width: 1.6535433071%;
   top: 33.9622641509%;
   left: 52.9921259843%;
 }
+@media (max-width: 43.74875em) {
+  .decoration-explorer-courses__item--p {
+    width: 6.6666666667%;
+    top: 24.9343832021%;
+    right: 44.9275362319%;
+  }
+}
 .decoration-explorer-courses__item--k {
-  width: 1.6535433071%;
-  top: auto;
-  bottom: 24.5283018868%;
-  left: 57.874015748%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--k {
+    display: block;
+    width: 1.6535433071%;
+    top: auto;
+    bottom: 24.5283018868%;
+    left: 57.874015748%;
+  }
 }
 .decoration-explorer-courses__item--b {
-  width: 1.8897637795%;
-  top: 4.9056603774%;
-  left: auto;
-  right: 13.3858267717%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--b {
+    display: block;
+    width: 1.8897637795%;
+    top: 4.9056603774%;
+    left: auto;
+    right: 13.3858267717%;
+  }
 }
 .decoration-explorer-courses__item--f {
-  width: 1.2598425197%;
-  top: 48.1132075472%;
-  left: auto;
-  right: 11.811023622%;
+  display: none;
+}
+@media (min-width: 43.74875em) {
+  .decoration-explorer-courses__item--f {
+    display: block;
+    width: 1.2598425197%;
+    top: 48.1132075472%;
+    left: auto;
+    right: 11.811023622%;
+  }
 }
 .decoration-explorer-courses__item--triangles {
   width: 6.2204724409%;
@@ -1921,9 +2014,23 @@ body {
   left: auto;
   right: 4.4881889764%;
 }
+@media (max-width: 43.74875em) {
+  .decoration-explorer-courses__item--triangles {
+    width: 11.5942028986%;
+    top: 40.0262467192%;
+    right: 10.7246376812%;
+  }
+}
 .decoration-explorer-courses__item--big-o {
   width: 2.7559055118%;
   top: 52.8301886792%;
   left: auto;
   right: -0.157480315%;
+}
+@media (max-width: 43.74875em) {
+  .decoration-explorer-courses__item--big-o {
+    width: 5.7971014493%;
+    top: 12.0734908136%;
+    right: 59.1304347826%;
+  }
 }
