@@ -262,7 +262,7 @@
 	}
 }
 
-//=====================================================================
+// .application =====================================================================
 .application {
 	position: relative;
 	@include adaptiveValue("padding-block", 100, 40, 0, $containerWidth, 575);
@@ -420,8 +420,7 @@
 	}
 }
 
-//=====================================================================
-
+// .line-decor =====================================================================
 .line-decor {
 	display: none;
 	@media (min-width: $mobile) {
@@ -462,6 +461,146 @@
 			&:nth-child(4) {
 				width: calc(100% - toRem(83));
 			}
+		}
+	}
+}
+
+// .explorer-courses =====================================================================
+.explorer-courses {
+	overflow: hidden;
+	background-color: #fff;
+	background:
+		url("../img/explore-courses/gradient-bg.png") center / cover no-repeat,
+		#914cff;
+	// .explorer-courses__container
+	&__container {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		column-gap: toRem(30);
+		padding-block: toRem(40);
+		background: url("../img/explore-courses/decorations/");
+	}
+	// .explorer-courses__content
+	&__content {
+		flex-basis: toRem(600);
+		align-self: center;
+		> * {
+			margin-bottom: toRem(24);
+		}
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+	// .explorer-courses__title
+	&__title {
+		color: #fff;
+	}
+	// .explorer-courses__text
+	&__text {
+		color: #fff;
+	}
+	// .explorer-courses__link
+	&__link {
+		// min-width: toRem(250);
+		&::before {
+			background-image: url("../img/icons/hat.png");
+		}
+		background-color: #fff;
+	}
+	// .explorer-courses__picture
+	&__picture {
+		padding-right: toRem(45);
+		flex-basis: toRem(512);
+		position: relative;
+		z-index: 1;
+		img {
+			width: 100%;
+			aspect-ratio: 467 / 450;
+			object-fit: contain;
+		}
+	}
+	// .explorer-courses__decoration
+	&__decoration {
+	}
+}
+
+.decoration-explorer-courses {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	// .decoration-explorer-courses__item
+	&__item {
+		position: absolute;
+		&--5 {
+			width: percent(40, $containerWidth);
+			top: percent(218, 530);
+			left: percent(253, $containerWidth);
+		}
+		&--8 {
+			width: percent(25, $containerWidth);
+			top: percent(-18, 530);
+			left: percent(285, $containerWidth);
+		}
+		&--0 {
+			width: percent(26, $containerWidth);
+			top: auto;
+			bottom: 0;
+			left: percent(324, $containerWidth);
+		}
+		&--o {
+			width: percent(24, $containerWidth);
+			top: percent(95, 530);
+			left: percent(534, $containerWidth);
+		}
+		&--x {
+			width: percent(45, $containerWidth);
+			top: percent(10, 530);
+			left: percent(550, $containerWidth);
+		}
+		&--m {
+			width: percent(30, $containerWidth);
+			top: auto;
+			bottom: percent(30, 530);
+			left: percent(583, $containerWidth);
+		}
+		&--p {
+			width: percent(23, $containerWidth);
+			top: percent(180, 530);
+			left: percent(673, $containerWidth);
+		}
+		&--k {
+			width: percent(21, $containerWidth);
+			top: auto;
+			bottom: percent(130, 530);
+			left: percent(735, $containerWidth);
+		}
+		&--b {
+			width: percent(24, $containerWidth);
+			top: percent(26, 530);
+			left: auto;
+			right: percent(170, $containerWidth);
+		}
+		&--f {
+			width: percent(16, $containerWidth);
+			top: percent(255, 530);
+			left: auto;
+			right: percent(150, $containerWidth);
+		}
+		&--triangles {
+			width: percent(79, $containerWidth);
+			top: percent(68, 530);
+			left: auto;
+			right: percent(57, $containerWidth);
+		}
+		&--big-o {
+			width: percent(35, $containerWidth);
+			top: percent(280, 530);
+			left: auto;
+			right: percent(-2, $containerWidth);
 		}
 	}
 }
