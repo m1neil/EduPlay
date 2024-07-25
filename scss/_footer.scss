@@ -82,6 +82,10 @@
 		@media (max-width: toEm(539.98)) {
 			grid-template-columns: repeat(2, minmax(auto, toRem(125)));
 		}
+		@media (max-width: toEm(374.98)) {
+			column-gap: toRem(15);
+			grid-template-columns: repeat(2, minmax(auto, toRem(200)));
+		}
 	}
 	// .top-footer__column
 	&__column {

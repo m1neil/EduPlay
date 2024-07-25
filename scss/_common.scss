@@ -4,13 +4,18 @@
 	@include adaptiveValue("font-size", 40, 24, 0, $containerWidth, 479.98);
 	font-weight: 700;
 	line-height: 1.2;
+	&--sm {
+		@include adaptiveValue("font-size", 36, 24, 0, $containerWidth, 479.98);
+	}
 }
 
 .text {
 	font-weight: 500;
 	line-height: 1.6;
-	p:not(:last-child) {
-		margin-bottom: toRem(5);
+	p {
+		&:not(:last-child) {
+			margin-bottom: toRem(5);
+		}
 	}
 	@media (max-width: $mobile) {
 		font-size: toRem(16);
@@ -108,6 +113,7 @@
 
 // .card-slide =====================================================================
 .card-slide {
+	display: block;
 	border-radius: toRem(12);
 	background-color: #fbfbfd;
 	box-shadow: 0 toRem(4) toRem(8) 0 rgba(0, 0, 0, 0.05);
@@ -153,7 +159,7 @@
 		&:active {
 			color: $activeColor;
 		}
-		@media (max-width: toEm(600)) {
+		@media (max-width: $tablet) {
 			font-size: toRem(24);
 		}
 	}
@@ -260,6 +266,8 @@
 	box-shadow: 0 toRem(4) toRem(8) 0 rgba(0, 0, 0, 0.05);
 	padding: toRem(30);
 	color: $darkColor;
+	display: flex;
+	flex-direction: column;
 	@media (max-width: toEm(600)) {
 		padding: toRem(26);
 	}
@@ -282,6 +290,7 @@
 		font-weight: 500;
 		line-height: 1.5;
 		letter-spacing: toRem(0.09);
+		flex-grow: 1;
 		&:not(:last-child) {
 			margin-bottom: toRem(20);
 		}
@@ -347,11 +356,214 @@
 		}
 		&--lg {
 			height: toRem(52);
+			@media (max-width: toEm(575)) {
+				height: toRem(42);
+			}
 		}
 		@media (any-hover: hover) {
 			&:hover {
 				transform: scale(1.02);
 			}
+		}
+	}
+}
+
+// .form =====================================================================
+.form {
+	@media (min-width: $mobileSmall) {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	// .form__input
+	&__input {
+		width: 100%;
+		flex-grow: 1;
+		height: toRem(56);
+		background-color: rgba(254, 247, 255, 0.85);
+		padding-inline: toRem(20);
+		color: $darkColor;
+		font-weight: 600;
+		font-size: toRem(17);
+		border-radius: toRem(12) 0 0 toRem(12);
+		&::placeholder {
+			color: #48555f;
+			transition: opacity 0.3s;
+		}
+		&:focus::placeholder {
+			opacity: 0;
+		}
+		@media (max-width: $mobile) {
+			height: toRem(48);
+		}
+		@media (max-width: $mobileSmall) {
+			margin-bottom: toRem(12);
+			border-radius: toRem(12);
+		}
+	}
+	// .form__button
+	&__button {
+		flex-shrink: 0;
+		padding: toRem(20) toRem(20);
+		background-color: #fff;
+		border-radius: 0 toRem(12) toRem(12) 0;
+		color: $darkColor;
+		font-size: toRem(16);
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: toRem(5);
+		text-transform: capitalize;
+		transition: background-color 0.3s;
+		&::before {
+			content: "";
+			flex-shrink: 0;
+			width: toRem(16);
+			height: toRem(15);
+			background: url("../img/icons/rocket.png") 0 0 / 100% no-repeat;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #f0f1f2;
+			}
+		}
+		&:active {
+			background-color: #d4d4d4;
+		}
+
+		@media (max-width: $mobile) {
+			padding-block: toRem(16);
+		}
+		@media (max-width: $mobileSmall) {
+			border-radius: toRem(12);
+			width: 100%;
+		}
+	}
+}
+
+//=====================================================================
+.spoller {
+	@media (min-width: $tablet) {
+		padding-left: toRem(40);
+	}
+	&:not(:last-child) {
+		padding-bottom: toRem(15);
+		transition: padding-bottom 0.5s;
+		border-bottom: toRem(1) solid #e5e7ea;
+		@media (max-width: $mobile) {
+			padding-bottom: toRem(12);
+		}
+		&:has(.spoller__title.--active) {
+			padding-bottom: toRem(25);
+			@media (max-width: $mobile) {
+				padding-bottom: toRem(20);
+			}
+		}
+	}
+	// .spoller__title
+	&__title {
+		color: $darkColor;
+		text-align: left;
+		font-size: toRem(22);
+		font-weight: 600;
+		line-height: 1.45;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: toRem(25);
+		width: 100%;
+		transition: color 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $hoverColor;
+			}
+		}
+		@media (max-width: $mobile) {
+			font-size: toRem(20);
+		}
+		@media (max-width: $mobileSmall) {
+			font-size: toRem(16);
+		}
+		span {
+			display: inline-block;
+			flex-shrink: 0;
+			width: toRem(42);
+			height: toRem(42);
+			background-image: $gradientColor;
+			border-radius: 50%;
+			position: relative;
+
+			&::before {
+				content: "";
+				position: absolute;
+				width: toRem(20);
+				height: toRem(2);
+				top: 50%;
+				left: 50%;
+				background-color: #fff;
+				transform: translate(-50%, -50%);
+				transition: transform 0.5s;
+			}
+			&::after {
+				content: "";
+				position: absolute;
+				width: toRem(2);
+				height: toRem(20);
+				top: 50%;
+				left: 50%;
+				background-color: #fff;
+				transform: translate(-50%, -50%);
+				transition:
+					height 0.5s,
+					transform 0.5s;
+			}
+			@media (max-width: $mobile) {
+				width: toRem(29);
+				height: toRem(29);
+				&::before {
+					width: toRem(14);
+				}
+				&::after {
+					height: toRem(14);
+				}
+			}
+		}
+		&.--active {
+			span {
+				&::before {
+					transform: translate(-50%, -50%) rotate(180deg);
+				}
+				&::after {
+					height: 0;
+					transform: translate(-50%, -50%) rotate(90deg);
+				}
+			}
+		}
+	}
+	// .spoller__text
+	&__text {
+		padding-top: toRem(20);
+		color: $darkColor;
+		font-size: toRem(18);
+		font-weight: 500;
+		line-height: 1.77;
+		letter-spacing: toRem(0.09);
+		p:not(:last-child) {
+			margin-bottom: toRem(7);
+		}
+		@media (min-width: $mobile) {
+			padding-left: toRem(67);
+		}
+		@media (max-width: $tablet) and (min-width: $tablet) {
+			padding-left: toRem(35);
+		}
+		@media (max-width: $mobile) {
+			padding-top: toRem(10);
+			font-size: toRem(16);
+		}
+		@media (max-width: $mobileSmall) {
+			font-size: toRem(14);
 		}
 	}
 }

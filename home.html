@@ -4,6 +4,9 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>EduPlay</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -16,16 +19,16 @@
 					<nav class="header__menu menu">
 						<ul class="menu__body">
 							<li class="menu__item">
-								<a href="#" class="menu__link">Home</a>
+								<a data-goto=".promo" href="#" class="menu__link">Home</a>
 							</li>
 							<li class="menu__item">
-								<a href="#" class="menu__link">Games</a>
+								<a data-goto=".application" href="#" class="menu__link">Games</a>
 							</li>
 							<li class="menu__item">
-								<a href="#" class="menu__link">Subjects</a>
+								<a data-goto=".explorer-courses" href="#" class="menu__link">Subjects</a>
 							</li>
 							<li class="menu__item">
-								<a href="#" class="menu__link">About</a>
+								<a data-goto=".try-free" href="#" class="menu__link">About</a>
 							</li>
 						</ul>
 					</nav>
@@ -90,7 +93,7 @@
 						<div class="benefits__items">
 							<div class="benefits__item item-benefit">
 								<img class="item-benefit__icon" src="img/benefits/engaging-games.png" alt="Engaging Games">
-								<div class="item-benefit__title">Engaging Games</div>
+								<h4 class="item-benefit__title">Engaging Games</h4>
 								<div class="item-benefit__text">
 									<p>
 										Kids play engaging, interactive games that are geared toward different subjects, making learning fun and
@@ -100,7 +103,7 @@
 							</div>
 							<div class="benefits__item item-benefit">
 								<img class="item-benefit__icon" src="img/benefits/practice-sheets.png" alt="Practice Sheets">
-								<div class="item-benefit__title">Practice Sheets</div>
+								<h4 class="item-benefit__title">Practice Sheets</h4>
 								<div class="item-benefit__text">
 									<p>
 										Practice sheets are customized based on a child's learning progress, focusing on specific skills and concepts
@@ -110,7 +113,7 @@
 							</div>
 							<div class="benefits__item item-benefit">
 								<img class="item-benefit__icon" src="img/benefits/bedtime-stories.png" alt="Bedtime Stories">
-								<div class="item-benefit__title">Bedtime Stories</div>
+								<h4 class="item-benefit__title">Bedtime Stories</h4>
 								<div class="item-benefit__text">
 									<p>
 										Children actively participate in the storytelling process, making bedtime an engaging and collaborative
@@ -229,6 +232,731 @@
 						</div>
 					</div>
 				</section>
+				<section class="library">
+					<div class="library__top top-library">
+						<div class="top-library__content">
+							<h2 class="top-library__title title">Join millions of confident learners </h2>
+							<ul class="top-library__list">
+								<li class="top-library__item">
+									<div class="top-library__label">Loved by over</div>
+									<div class="top-library__text">30 million learners</div>
+								</li>
+								<li class="top-library__item">
+									<div class="top-library__label">Browse over</div>
+									<div class="top-library__text">50 million games </div>
+								</li>
+								<li class="top-library__item">
+									<div class="top-library__label">80% learners show</div>
+									<div class="top-library__text">increased confidence in 2 weeks</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="library__center center-library">
+						<div class="center-library__content">
+							<h2 class="center-library__title title title--sm">Unlocking minds, One game at a <span>time</span></h2>
+							<div class="center-library__text text">
+								<p>
+									Unlock joyful learning with EduPlay: Games that spark brilliance, practice sheets that perfect skills, and the best adventure for growing minds. <mark>Explore, Play, Thrive!</mark>
+								</p>
+							</div>
+							<div class="center-library__nav">
+								<div class="center-library__pagination pagination-library">
+									<div class="pagination-library__item pagination-library__item--games"></div>
+									<div class="pagination-library__item pagination-library__item--sheets"></div>
+								</div>
+								<div class="center-library__nav-tabs">
+									<button data-tab-index="0" type="button" class="center-library__button center-library__button--games"><span>Games (3867+)</span></button>
+									<button data-tab-index="1" type="button" class="center-library__button center-library__button--sheets"><span>Practice sheets (3238+)</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="library__bottom bottom-library">
+						<div class="bottom-library__content">
+							<div class="bottom-library__tabs">
+								<div data-tab class="bottom-library__tab">
+									<div class="bottom-library__slider bottom-library__slider--games swiper">
+										<div class="bottom-library__wrapper swiper-wrapper">
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/04.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/05.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/01.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/02.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/04.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/05.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/01.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/02.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/04.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/05.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/01.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/02.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div data-tab class="bottom-library__tab">
+									<div class="bottom-library__slider bottom-library__slider--sheets swiper">
+										<div class="bottom-library__wrapper swiper-wrapper">
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/01.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/02.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/04.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/05.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/01.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/02.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+											<div class="bottom-library__slide swiper-slide">
+												<article class="bottom-library__card-slide card-slide">
+													<a href="#" target="_blank" class="card-slide__image">
+														<img src="img/library/03.jpg" alt="#">
+													</a>
+													<div class="card-slide__body">
+														<h2 class="card-slide__title">
+															<a href="#" target="_blank">Pre-Kindergarten</a>
+														</h2>
+														<div class="card-slide__key-words">
+															<div class="card-slide__key-word">Shapes</div>
+															<div class="card-slide__key-word">Addition</div>
+															<div class="card-slide__key-word">Counting</div>
+														</div>
+														<a href="#" target="_blank" class="card-slide__all">See all 320 games</a>
+													</div>
+												</article>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="library__footer footer-library">
+						<div class="footer-library__content">
+							<a href="#" class="footer-library__link link">Browse our library</a>
+							<div class="footer-library__info">We keep releasing new games <a href="#">every three weeks</a></div>
+						</div>
+					</div>
+				</section>
+				<div class="know-us">
+					<div class="know-us__container">
+						<div class="know-us__title title">You might know us from</div>
+						<div class="know-us__items">
+							<div class="know-us__item">
+								<img src="img/know-us/01.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/02.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/03.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/04.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/05.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/06.jpg" alt="image">
+							</div>
+							<div class="know-us__item">
+								<img src="img/know-us/07.jpg" alt="image">
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="newsletter">
+					<div class="newsletter__container">
+						<div class="newsletter__body">
+							<h3 class="newsletter__title">Newsletter</h3>
+							<div class="newsletter__text text">
+								<p>
+									Spark joy in <span class="icon-star">learning</span> Join our newsletter to get the latest games, practice sheets, and bedtime <span class="icon-rocket">stories.</span>
+								</p>
+							</div>
+						</div>
+						<form action class="newsletter__form form">
+							<input placeholder="Enter your email" type="email" required class="form__input">
+							<button type="submit" class="form__button">Subscribe</button>
+						</form>
+					</div>
+				</section>
+				<section class="reviews">
+					<div class="reviews__container">
+						<h2 class="reviews__title title">95% of parents said their children enjoy using EduPlay</h2>
+						<div class="reviews__text text">
+							<p>
+								Below are some of the reviews parents left on our <a href="#" target="_blank">App Store</a> and <a href="#" target="_blank">Google Play</a>
+							</p>
+						</div>
+						<div class="reviews__items">
+							<div class="reviews__card card-review">
+								<img src="img/icons/quotes.svg" alt="quotes" class="card-review__quotes">
+								<div class="card-review__text">
+									<p>
+										EduPlay has been a game-changer for my 7-year-old! The adaptive games make learning enjoyable, and the personalized
+										practice sheets are a lifesaver.
+									</p>
+								</div>
+								<div class="card-review__bottom">
+									<div class="card-review__user">Emily Halter (AppStore)</div>
+									<div data-rating="2" class="card-review__rating rating">
+										<div class="rating__active"></div>
+										<img class="rating__field" src="img/icons/default-star.svg" alt="rating">
+									</div>
+								</div>
+							</div>
+							<div class="reviews__card card-review">
+								<img src="img/icons/quotes.svg" alt="quotes" class="card-review__quotes">
+								<div class="card-review__text">
+									<p>
+										The practice sheets help me get better at stuff, and the bedtime stories are super fun. I can even tell my own stories sometimes! EduPlay makes me look forward to learning.
+									</p>
+								</div>
+								<div class="card-review__bottom">
+									<div class="card-review__user">Mars Sam (GooglePlay)</div>
+									<div data-rating="4" class="card-review__rating rating">
+										<div class="rating__active"></div>
+										<img class="rating__field" src="img/icons/default-star.svg" alt="rating">
+									</div>
+								</div>
+							</div>
+							<div class="reviews__card card-review">
+								<img src="img/icons/quotes.svg" alt="quotes" class="card-review__quotes">
+								<div class="card-review__text">
+									<p>
+										Homeschooling three kids can be challenging, but EduPlay has been a game-changer for us. The games cover a range of subjects, making learning diverse and engaging
+									</p>
+								</div>
+								<div class="card-review__bottom">
+									<div class="card-review__user">Lisa Parker (AppStore)</div>
+									<div data-rating="5" class="card-review__rating rating">
+										<div class="rating__active"></div>
+										<img class="rating__field" src="img/icons/default-star.svg" alt="rating">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="reviews__apps apps">
+							<a href="#" target="_blank" class="apps__item apps__item--lg">
+								<img src="img/google-play.svg" alt="Google Play">
+							</a>
+							<a href="#" target="_blank" class="apps__item apps__item--lg">
+								<img src="img/app-store.svg" alt="App Store">
+							</a>
+						</div>
+						<div class="reviews__decor">
+							<div class="reviews__illustration reviews__illustration--01">
+								<img src="img/review/illustration-01.svg" alt="decoration">
+							</div>
+							<div class="reviews__illustration reviews__illustration--02">
+								<img src="img/review/illustration-02.svg" alt="decoration">
+							</div>
+						</div>
+					</div>
+				</section>
+				<div class="questions">
+					<div class="questions__container">
+						<h2 class="questions__title title">Frequently Asked Questions</h2>
+						<div data-spollers data-accordion class="questions__spollers">
+							<div class="questions__spoller spoller">
+								<button data-spoller type="button" class="spoller__title --active">What is EduPlay, and how does it work?<span></span></button>
+								<div class="spoller__text">
+									<p>
+										EduPlay is a gamified learning app designed for children. It transforms educational content into engaging games across various subjects. The app adapts to each child's learning style, providing a personalized and interactive learning experience. Children explore lessons through fun games, making the educational journey enjoyable and effective.
+									</p>
+								</div>
+							</div>
+							<div class="questions__spoller spoller">
+								<button data-spoller type="button" class="spoller__title">Is EduPlay suitable for all age groups?<span></span></button>
+								<div class="spoller__text">
+									<p>
+										EduPlay is a gamified learning app designed for children. It transforms educational content into engaging games across various subjects. The app adapts to each child's learning style, providing a personalized and interactive learning experience. Children explore lessons through fun games, making the educational journey enjoyable and effective.
+									</p>
+								</div>
+							</div>
+							<div class="questions__spoller spoller">
+								<button data-spoller type="button" class="spoller__title">How does EduPlay ensure my child's safety while using the app?<span></span></button>
+								<div class="spoller__text">
+									<p>
+										EduPlay is a gamified learning app designed for children. It transforms educational content into engaging games across various subjects. The app adapts to each child's learning style, providing a personalized and interactive learning experience. Children explore lessons through fun games, making the educational journey enjoyable and effective.
+									</p>
+								</div>
+							</div>
+							<div class="questions__spoller spoller">
+								<button data-spoller type="button" class="spoller__title">Can parents track their child's progress on EduPlay?<span></span></button>
+								<div class="spoller__text">
+									<p>
+										EduPlay is a gamified learning app designed for children. It transforms educational content into engaging games across various subjects. The app adapts to each child's learning style, providing a personalized and interactive learning experience. Children explore lessons through fun games, making the educational journey enjoyable and effective.
+									</p>
+								</div>
+							</div>
+							<div class="questions__spoller spoller">
+								<button data-spoller type="button" class="spoller__title">Are there any costs associated with using EduPlay?<span></span></button>
+								<div class="spoller__text">
+									<p>
+										EduPlay is a gamified learning app designed for children. It transforms educational content into engaging games across various subjects. The app adapts to each child's learning style, providing a personalized and interactive learning experience. Children explore lessons through fun games, making the educational journey enjoyable and effective.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="try-free">
+					<div class="try-free__container">
+						<div data-da=".try-free__body,767.98,2" class="try-free__img">
+							<img src="img/try-free/Illustration.png" alt="Illustration">
+						</div>
+						<div class="try-free__body">
+							<h2 class="try-free__title title">Try EduPlay for free</h2>
+							<div class="try-free__text text">
+								<p>
+									Unlock knowledge through play. Dive into EduPlay's world of fun and discovery. Ready for endless smiles and learning adventures?
+								</p>
+							</div>
+							<a href="#" class="try-free__link link">Get started for free</a>
+						</div>
+						<div class="try-free__decor">
+							<div class="try-free__decor-item try-free__decor-item--01">
+								<img src="img/try-free/decor-01.svg" alt="decor">
+							</div>
+							<div class="try-free__decor-item try-free__decor-item--02">
+								<img src="img/try-free/decor-02.svg" alt="decor">
+							</div>
+							<div class="try-free__decor-item try-free__decor-item--03">
+								<img src="img/try-free/decor-03.svg" alt="decor">
+							</div>
+						</div>
+					</div>
+				</section>
 			</main>
 			<footer class="footer">
 				<div class="footer__top top-footer">
@@ -257,16 +985,16 @@
 								<div class="column-top-footer__title">Quick links</div>
 								<ul class="column-top-footer__list">
 									<li class="column-top-footer__item">
-										<a href="#" class="column-top-footer__link">Home</a>
+										<a data-goto=".promo.promo" href="#" class="column-top-footer__link">Home</a>
 									</li>
 									<li class="column-top-footer__item">
-										<a href="#" class="column-top-footer__link">Games</a>
+										<a data-goto=".application" href="#" class="column-top-footer__link">Games</a>
 									</li>
 									<li class="column-top-footer__item">
-										<a href="#" class="column-top-footer__link">Subjects</a>
+										<a data-goto=".explorer-courses" href="#" class="column-top-footer__link">Subjects</a>
 									</li>
 									<li class="column-top-footer__item">
-										<a href="#" class="column-top-footer__link">About</a>
+										<a data-goto=".try-free" href="#" class="column-top-footer__link">About</a>
 									</li>
 								</ul>
 							</div>
@@ -329,7 +1057,8 @@
 				</div>
 			</footer>
 		</div>
+		<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script defer src="js/dynamic_adapt.js"></script>
+		<script src="js/script.js"></script>
 	</body>
-	<script defer src="js/dynamic_adapt.js"></script>
-	<script src="js/script.js"></script>
 </html>
