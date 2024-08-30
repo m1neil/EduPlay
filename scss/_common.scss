@@ -117,6 +117,8 @@
 	border-radius: toRem(12);
 	background-color: #fbfbfd;
 	box-shadow: 0 toRem(4) toRem(8) 0 rgba(0, 0, 0, 0.05);
+	display: flex;
+	flex-direction: column;
 	// .card-slide__image
 	&__image {
 		display: block;
@@ -136,13 +138,12 @@
 	}
 	// .card-slide__body
 	&__body {
+		flex-grow: 1;
 		padding: toRem(10) toRem(22) toRem(24);
-		> * {
-			margin-bottom: toRem(10);
-		}
-		> *:last-child {
-			margin-bottom: 0;
-		}
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		row-gap: toRem(10);
 	}
 	// .card-slide__title
 	&__title {
@@ -159,7 +160,7 @@
 		&:active {
 			color: $activeColor;
 		}
-		@media (max-width: $tablet) {
+		@media (max-width: toEm(1120)) {
 			font-size: toRem(24);
 		}
 	}
@@ -168,7 +169,8 @@
 		display: flex;
 		gap: toRem(14);
 		flex-wrap: wrap;
-		margin-bottom: toRem(35);
+		align-items: flex-start;
+		flex-grow: 1;
 		@media (max-width: toEm(600)) {
 			gap: toRem(12);
 		}
@@ -345,6 +347,7 @@
 		outline-offset: toRem(3);
 		border-radius: toRem(2);
 		height: toRem(40);
+		will-change: transform;
 		transition:
 			transform 0.3s,
 			outline-color 0.3s;
@@ -474,6 +477,9 @@
 		column-gap: toRem(25);
 		width: 100%;
 		transition: color 0.3s;
+		&.--active {
+			color: $hoverColor;
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: $hoverColor;
@@ -493,7 +499,6 @@
 			background-image: $gradientColor;
 			border-radius: 50%;
 			position: relative;
-
 			&::before {
 				content: "";
 				position: absolute;

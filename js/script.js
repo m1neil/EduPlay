@@ -3,11 +3,17 @@
 window.addEventListener("load", windowLoaded)
 
 function windowLoaded() {
+
+	document.addEventListener("click", documentActions)
+	const mediaMobile = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
+	mediaMobile.addEventListener('change', e => initWatcher(e.matches))
+
 	// inits modules
 	initRating()
 	initSpollers()
 	initTabs()
-	document.addEventListener("click", documentActions)
+	initAnimateText()
+	initWatcher(mediaMobile.matches)
 
 	new Swiper('.bottom-library__slider--games', {
 		pagination: {
@@ -21,10 +27,6 @@ function windowLoaded() {
 		slidesPerGroup: 3,
 		speed: 800,
 		spaceBetween: 30,
-		autoplay: {
-			delay: 5000,
-			pauseOnMouseEnter: true,
-		},
 	});
 	new Swiper('.bottom-library__slider--sheets', {
 		pagination: {
@@ -38,17 +40,11 @@ function windowLoaded() {
 		slidesPerGroup: 3,
 		speed: 800,
 		spaceBetween: 30,
-		autoplay: {
-			delay: 5000,
-			pauseOnMouseEnter: true,
-		},
 	});
 }
 
 function documentActions(e) {
 	const target = e.target
-
-	// go to section
 	if (target.closest("[data-goto]")) {
 		const selector = target.closest("[data-goto]").dataset.goto
 		if (selector && document.querySelector(selector)) {
@@ -206,8 +202,8 @@ function initTabs() {
 			const currentButton = target.closest('[data-tab-index]');
 			toggleTabs(parseInt(currentButton.dataset.tabIndex))
 		}
-
 	})
+
 	toggleTabs()
 
 	function toggleTabs(currentIndex = 0) {
@@ -226,3 +222,50 @@ function initTabs() {
 
 }
 
+function initWatcher(matches) {
+	const items = document.querySelectorAll('[data-watch]')
+	if (!items.length) return
+	const options = {
+		root: null,
+		rootMargin: '0px 0px 0px 0px',
+		threshold: '0.5'
+	}
+	const observer = new IntersectionObserver(addClassWatchingSection, options)
+	if (matches)
+		items.forEach(item => observer.observe(item))
+	else
+		items.forEach(item => observer.unobserve(item))
+
+	function addClassWatchingSection(entries, observer) {
+		entries.forEach(entry => {
+			const target = entry.target
+			if (entry.isIntersecting) {
+				target.classList.add('--watch')
+				observer.unobserve(entry.target)
+			}
+		})
+	}
+}
+
+function initAnimateText() {
+	const texts = document.querySelectorAll('[data-animate-text]')
+	if (texts.length) {
+		texts.forEach(text => {
+			const startDelay = parseInt(text.dataset.animateText)
+			let duration
+			if (text.dataset.animateDuration.includes('s'))
+				duration = parseFloat(text.dataset.animateDuration) * 1000
+			else
+				duration = parseFloat(text.dataset.animateDuration)
+
+			const words = text.textContent.split(' ').map((word, index) => {
+				const delay = index === 0 ?
+					startDelay :
+					startDelay + (duration * index)
+				return `<span style="transition-delay: ${delay / 1000}s; transition-duration: ${duration / 1000}s">${word}</span>`
+			})
+
+			text.innerHTML = words.join(' ')
+		})
+	}
+}

@@ -41,6 +41,18 @@
 		@include adaptiveValue("font-size", 64, 40, 0, $containerWidth, 790);
 		font-weight: 700;
 		line-height: 1.21;
+		@media (min-width: $mobile) {
+			transform: translateX(-30%);
+			transition:
+				transform 0.8s,
+				opacity 0.8s;
+			opacity: 0;
+			.--watch & {
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
 		span {
 			color: transparent;
 			background-image: $gradientColor;
@@ -55,6 +67,17 @@
 		font-size: toRem(20);
 		font-weight: 500;
 		line-height: 1.6;
+		@media (min-width: $mobile) {
+			transform: translateX(-30%);
+			opacity: 0;
+			transition:
+				transform 0.7s 0.2s,
+				opacity 0.7s 0.2s;
+			.--watch & {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
 		p:not(:last-child) {
 			margin-bottom: toRem(5);
 		}
@@ -71,6 +94,32 @@
 	}
 	// .promo__link
 	&__link {
+		@media (min-width: $mobile) {
+			&:first-child {
+				transform: translate(toRem(-30), 0);
+				transition:
+					transform 0.4s 0.6s,
+					opacity 0.4s 0.6s,
+					background-color 0.5s 0s;
+				opacity: 0;
+				.--watch & {
+					transform: translate(0, 0);
+					opacity: 1;
+				}
+			}
+			&:last-child {
+				transform: translate(toRem(-35), 0);
+				opacity: 0;
+				transition:
+					transform 0.4s 0.7s,
+					opacity 0.4s 0.7s,
+					background-color 0.5s 0s;
+				.--watch & {
+					transform: translate(0, 0);
+					opacity: 1;
+				}
+			}
+		}
 		@media (max-width: $mobileSmall) {
 			width: 100%;
 		}
@@ -84,9 +133,17 @@
 		flex-basis: toRem(569);
 		padding-block: toRem(22) 6.8%;
 		@media (min-width: $mobile) {
-			// margin-top: toRem(-22);
+			transform: translate(42%, 0);
+			opacity: 0;
+			transition:
+				transform 0.9s 0.5s,
+				opacity 0.9s 0.5s;
+			overflow: hidden;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
 		}
-		overflow: hidden;
 		img {
 			position: relative;
 			z-index: 1;
@@ -116,20 +173,51 @@
 	align-items: center;
 	flex-wrap: wrap;
 	column-gap: toRem(8);
+	@media (min-width: $mobile) {
+		will-change: transform;
+		transform: translate(toRem(25), toRem(-10)) scale(1.1);
+		opacity: 0;
+		transition:
+			transform 0.4s 0.8s,
+			opacity 0.4s 0.8s;
+		.--watch & {
+			transform: translate(0, 0) scale(1);
+			opacity: 1;
+		}
+	}
+
 	// .evaluation-promo__value
 	&__value,
 	&__text {
 		color: $darkColor;
 		font-size: toRem(14);
 		font-weight: 600;
-		line-height: 1.71;
 	}
+
+	&__value {
+	}
+
 	// .evaluation-promo__rating
 	&__rating {
 		flex-shrink: 0;
 	}
 	// .evaluation-promo__text
 	&__text {
+		line-height: 1.71;
+		@media (min-width: $mobile) {
+			span {
+				display: inline-block;
+				opacity: 0;
+				transform: translate(toRem(-10), 0);
+				transition:
+					transform ease-out,
+					opacity ease-out;
+				.--watch & {
+					transform: translate(0, 0);
+					opacity: 1;
+				}
+			}
+		}
 	}
 }
 
@@ -140,9 +228,25 @@
 	display: flex;
 	justify-content: space-between;
 	column-gap: toRem(25);
+
 	@include adaptiveValue("height", 173, 58, 0, $containerWidth, 768);
 	top: 0;
 	left: toRem(11);
+	@media (min-width: $mobile) {
+		transform: rotate(-10deg) scale(1.4);
+		opacity: 0;
+		will-change: transform;
+		transition:
+			top 0.8s 0.16s,
+			transform 0.8s 0.16s,
+			opacity 0.8s 0.16s;
+		top: toRem(-50);
+		.--watch & {
+			top: 0;
+			transform: rotate(0) scale(1);
+			opacity: 1;
+		}
+	}
 	@media (max-width: $mobile) {
 		width: calc(100% - toRem($containerPadding));
 		left: toRem(15);
@@ -249,6 +353,52 @@
 	// .benefits__item
 	&__item {
 		flex: 1 1 toRem(240);
+		@media (min-width: $mobile) {
+			overflow: hidden;
+			position: relative;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 50%;
+				left: 0;
+				background-color: #fff;
+				z-index: 1;
+				transition: height 0.6s;
+			}
+			&::before {
+				top: 0;
+			}
+			&::after {
+				bottom: 0;
+			}
+			.--watch & {
+				&::before,
+				&::after {
+					height: 0;
+				}
+			}
+			& > * {
+				transition: transform 0.8s;
+				transform: scale(1.19);
+				will-change: transform;
+			}
+			@for $index from 1 through 3 {
+				&:nth-child(#{$index}) {
+					$delay: ($index - 1) * 0.2;
+					&::before,
+					&::after,
+					& > * {
+						transition-delay: #{$delay}s;
+					}
+				}
+			}
+			.--watch & > * {
+				transform: scale(1);
+			}
+		}
+
 		@media (max-width: $mobile) {
 			&:first-child {
 				flex-basis: 100%;
@@ -296,6 +446,17 @@
 	}
 	// .application__title
 	&__title {
+		@media (min-width: $mobile) {
+			transform: translate(-30%, 0);
+			transition:
+				transform 0.6s,
+				opacity 0.6s;
+			opacity: 0;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
+		}
 		br {
 			display: none;
 			@media (min-width: toEm(699.98)) {
@@ -306,6 +467,17 @@
 	// .application__text
 	&__text {
 		margin-bottom: toRem(32);
+		@media (min-width: $mobile) {
+			transform: translate(-30%, 0);
+			transition:
+				transform 0.6s 0.2s,
+				opacity 0.6s 0.2s;
+			opacity: 0;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
+		}
 		@media (max-width: $mobile) {
 			margin-bottom: toRem(24);
 		}
@@ -326,6 +498,23 @@
 		color: $darkColor;
 		line-height: 1.6;
 		font-weight: 600;
+		@media (min-width: $mobile) {
+			transition:
+				transform 0.3s,
+				opacity 0.3s;
+			transform: translate(-15%, 0);
+			opacity: 0;
+			@for $index from 1 through 6 {
+				&:nth-child(#{$index}) {
+					$delay: ($index - 1) * 0.18 + 0.5;
+					transition-delay: #{$delay}s;
+				}
+			}
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
+		}
 		&:not(:last-child) {
 			margin-bottom: toRem(32);
 			@media (max-width: $tablet) {
@@ -359,6 +548,33 @@
 	}
 	// .application__apps
 	&__apps {
+		@media (min-width: $mobile) {
+			.apps__item {
+				opacity: 0;
+				transform: translate(-25%, 0);
+				&:first-child {
+					transition:
+						transform 0.5s 1.6s,
+						outline-color 0.3s,
+						opacity 0.5s 1.6s;
+				}
+				&:last-child {
+					transition:
+						transform 0.5s 1.69s,
+						outline-color 0.3s,
+						opacity 0.5s 1.69s;
+				}
+				.--watch & {
+					opacity: 1;
+					transform: translate(0, 0);
+				}
+				@media (any-hover: hover) {
+					&:hover {
+						transform: scale(1.02);
+					}
+				}
+			}
+		}
 		@media (max-width: toEm(699.98)) {
 			.apps__item--lg {
 				height: toRem(42);
@@ -370,12 +586,35 @@
 		position: relative;
 		flex: 0 1 toRem(452);
 		padding-right: toRem(43);
+		@media (min-width: $mobile) {
+			opacity: 0;
+			.--watch & {
+				animation: show-phone 0.8s ease forwards 0.6s;
+			}
+		}
 		@media (max-width: $tablet) {
 			padding-right: 0;
 		}
 		@media (max-width: toEm(699.98)) {
-			width: 89.23%;
+			max-width: toRem(300);
 			margin: 0 auto;
+		}
+		@keyframes show-phone {
+			0% {
+				opacity: 0;
+				transform: scale(1.1) translate(0, 8%);
+			}
+			30% {
+				opacity: 1;
+			}
+			50% {
+				transform: scale(1.1) translate(0, 0);
+			}
+			90%,
+			100% {
+				opacity: 1;
+				transform: scale(1);
+			}
 		}
 	}
 	&__img-wrapper {
@@ -501,10 +740,30 @@
 	// .explorer-courses__title
 	&__title {
 		color: #fff;
+		@media (min-width: $mobile) {
+			transform: translate(-30%, 0);
+			opacity: 0;
+			transition:
+				transform 0.6s,
+				opacity 0.6s;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 01;
+			}
+		}
 	}
 	// .explorer-courses__text
 	&__text {
 		color: #fff;
+		transform: translate(-30%, 0);
+		opacity: 0;
+		transition:
+			transform 0.6s 0.2s,
+			opacity 0.6s 0.2s;
+		.--watch & {
+			transform: translate(0, 0);
+			opacity: 01;
+		}
 	}
 	// .explorer-courses__link
 	&__link {
@@ -512,6 +771,17 @@
 			background-image: url("../img/icons/hat.png");
 		}
 		background-color: #fff;
+		@media (min-width: $mobile) {
+			transform: translate(-30%, 0);
+			opacity: 0;
+			transition:
+				transform 0.3s 0.5s,
+				opacity 0.3s 0.5s;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
+		}
 		@media (max-width: $mobileSmall) {
 			width: 100%;
 		}
@@ -520,6 +790,17 @@
 	&__picture {
 		@media (min-width: $pc) {
 			padding-right: toRem(45);
+		}
+		@media (min-width: $mobile) {
+			transform: translate(30%, 0);
+			opacity: 0;
+			transition:
+				transform 0.8s 0.2s,
+				opacity 0.8s 0.2s;
+			.--watch & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
 		}
 		@media (min-width: toEm(699.98)) {
 			flex-basis: toRem(512);
@@ -547,6 +828,9 @@
 	background: url("../img/library/texture-bg.jpg") center / cover no-repeat;
 	> * {
 		margin-block-end: toRem(60);
+		@media (max-width: $tablet) {
+			margin-block-end: toRem(40);
+		}
 	}
 	> *:last-child {
 		margin-block-end: 0;
@@ -572,12 +856,59 @@
 	@include gridContainer(0, 985);
 	// .top-library__content
 	&__content {
+		position: relative;
+	}
+	// .top-library__decoration
+	&__decoration {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		// height: 100%;
+		img {
+			position: absolute;
+			&:first-child {
+				width: percent(108, 985);
+				top: toRem(105);
+				left: toRem(-170);
+				@media (min-width: $mobile) {
+					transform: scale(0) rotate(-35deg);
+					transition: transform 0.5s 0.17s;
+					.--watch & {
+						transform: scale(1) rotate(0);
+					}
+				}
+			}
+			&:last-child {
+				width: percent(136, 985);
+				top: toRem(157);
+				right: toRem(-170);
+				@media (min-width: $mobile) {
+					transform: scale(0.5);
+					opacity: 0;
+					transition:
+						transform 0.5s 0.3s,
+						opacity 0.5s 0.3s;
+					.--watch & {
+						transform: scale(1);
+						opacity: 1;
+					}
+				}
+			}
+		}
 	}
 	// .top-library__title
 	&__title {
 		text-align: center;
 		&:not(:last-child) {
 			margin-bottom: toRem(24);
+		}
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transition: opacity 0.5s;
+			.--watch & {
+				opacity: 1;
+			}
 		}
 	}
 	// .top-library__list
@@ -590,13 +921,37 @@
 		text-align: center;
 		padding-inline: toRem(50);
 		&:not(:last-child) {
-			border-right: toRem(1) solid #78848c;
+			border-right: toRem(1) solid transparent;
 		}
 		&:first-child {
 			padding-inline-start: 0;
 		}
 		&:last-child {
 			padding-inline-end: 0;
+		}
+		@media (min-width: $mobile) {
+			transition:
+				transform 0.5s,
+				opacity 0.2s,
+				border-color 0.3s;
+			transform: scale(0.4);
+			opacity: 0;
+			.--watch & {
+				transform: scale(1);
+				opacity: 1;
+				&:not(:last-child) {
+					border-color: #78848c;
+				}
+			}
+			@for $index from 1 through 3 {
+				&:nth-child(#{$index}) {
+					$delay: ($index - 1) * 0.17 + 0.17;
+					transition-delay:
+						#{$delay}s,
+						#{$delay}s,
+						#{$delay + 0.4}s;
+				}
+			}
 		}
 	}
 	// .top-library__label
@@ -637,6 +992,13 @@
 				background: url("../img/icons/rocket.png") 0 0 / 100% no-repeat;
 			}
 		}
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transition: opacity 0.5s 0.7s;
+			.--watch & {
+				opacity: 1;
+			}
+		}
 	}
 	// .center-library__text
 	&__text {
@@ -644,23 +1006,61 @@
 		mark {
 			background-color: #bffbff;
 		}
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transition: opacity 0.5s 0.9s;
+			.--watch & {
+				opacity: 1;
+			}
+		}
 	}
 	// .center-library__nav
 	&__nav {
-		display: flex;
-		column-gap: toRem(24);
-		align-items: center;
+		@media (min-width: $tablet) {
+			display: flex;
+			column-gap: toRem(24);
+		}
 	}
 	// .center-library__pagination
 	&__pagination {
-		flex: 0 0 toRem(332);
+		@media (min-width: $tablet) {
+			flex: 0 0 toRem(332);
+		}
+		@media (max-width: $tablet) {
+			&:not(:last-child) {
+				margin-bottom: toRem(20);
+			}
+		}
 	}
 	// .center-library__nav-tabs
 	&__nav-tabs {
-		flex: 0 0 toRem(464);
-		display: flex;
-		padding-inline-start: toRem(23);
-		border-inline-start: toRem(1) solid rgba(120, 132, 140, 0.5);
+		@media (min-width: toEm(375)) {
+			display: flex;
+		}
+		@media (min-width: $tablet) {
+			padding-inline-start: toRem(23);
+			flex: 0 0 toRem(464);
+			align-items: center;
+			border-inline-start: toRem(1) solid transparent;
+		}
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transform: scale(0.5);
+			transition:
+				transform 0.5s 1.1s,
+				opacity 0.5s 1.1s,
+				border-color 0.3s 1.55s;
+			.--watch & {
+				opacity: 1;
+				transform: scale(1);
+				@media (min-width: $tablet) {
+					border-color: rgba(120, 132, 140, 0.5);
+				}
+			}
+		}
+		@media (max-width: $tablet) {
+			justify-content: center;
+		}
 	}
 	// .center-library__button
 	&__button {
@@ -697,11 +1097,14 @@
 			z-index: 1;
 			transition: color 0.3s;
 			color: $darkColor;
-			font-family: Quicksand;
 			font-size: toRem(17);
 			font-weight: 500;
 			line-height: 1.3;
 			letter-spacing: toRem(0.102);
+			@media (max-width: $mobileSmall) {
+				font-size: toRem(13);
+				line-height: 1.5;
+			}
 		}
 		// .center-library__button--games
 		&--games {
@@ -717,6 +1120,7 @@
 				border-radius: 0 toRem(100) toRem(100) 0;
 			}
 		}
+
 		&.--active {
 			&::after {
 				opacity: 1;
@@ -739,6 +1143,21 @@
 				color: #fff;
 			}
 		}
+		@media (max-width: $mobileSmall) {
+			padding-inline: toRem(10);
+			padding-block: toRem(10);
+		}
+		@media (max-width: toEm(374)) {
+			display: block;
+			width: 100%;
+			border-radius: toRem(100);
+			&::before {
+				border-radius: toRem(100);
+			}
+			&:not(:last-child) {
+				margin-bottom: toRem(10);
+			}
+		}
 	}
 }
 .pagination-library {
@@ -749,20 +1168,32 @@
 	.swiper-pagination-bullets {
 		flex-wrap: wrap;
 		row-gap: toRem(10);
+		justify-content: right;
 		column-gap: toRem(16);
 		display: none;
+
 		&.--active {
 			display: flex;
+		}
+		@media (max-width: $tablet) {
+			justify-content: center;
+		}
+		@media (max-width: toEm(374)) {
+			column-gap: toRem(10);
 		}
 	}
 	.swiper-pagination-bullet {
 		position: relative;
 		overflow: hidden;
 		flex: 0 0 toRem(42);
-		block-size: toRem(42);
+		height: toRem(42);
 		opacity: 1;
 		background-color: transparent;
 		border-radius: 50%;
+		@media (max-width: toEm(699)) {
+			flex-basis: toRem(29);
+			height: toRem(29);
+		}
 		&::before {
 			content: "";
 			position: absolute;
@@ -794,6 +1225,10 @@
 			color: $darkColor;
 			font-size: toRem(22);
 			font-weight: 500;
+			@media (max-width: toEm(699)) {
+				font-size: toRem(15);
+				line-height: 1.8;
+			}
 		}
 		&-active {
 			&::after {
@@ -815,6 +1250,17 @@
 			}
 			span {
 				color: #fff;
+			}
+		}
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transform: scale(0.5);
+			transition:
+				transform 0.5s 1.1s,
+				opacity 0.5s 1.1s;
+			.--watch & {
+				opacity: 1;
+				transform: scale(1);
 			}
 		}
 	}
@@ -839,10 +1285,27 @@
 	// .bottom-library__tab
 	&__tab {
 		display: none;
+		.swiper {
+			overflow: visible;
+		}
 		&.--active {
 			animation: showTab 0.8s ease forwards;
 			display: block;
+			@media (min-width: $mobile) {
+				.swiper {
+					opacity: 0;
+					transform: translateX(-12%);
+					transition:
+						transform 0.8s 1.3s,
+						opacity 0.8s 1.3s;
+					.--watch & {
+						opacity: 1;
+						transform: translateX(0);
+					}
+				}
+			}
 		}
+
 		@keyframes showTab {
 			0% {
 				opacity: 0.2;
@@ -852,6 +1315,8 @@
 				opacity: 1;
 				transform: translate(0, 0);
 			}
+		}
+		@keyframes slide-left {
 		}
 	}
 
@@ -868,12 +1333,23 @@
 	// .bottom-library__wrapper
 	&__wrapper {
 	}
+	.swiper-wrapper {
+		align-items: stretch;
+	}
 	// .bottom-library__slide
 	&__slide {
-		flex-basis: toRem(390);
+		flex: 0 0 toRem(390);
+		height: auto;
+		@media (max-width: toEm(1350)) {
+			flex-basis: toRem(320);
+		}
+		@media (max-width: toEm(1120)) {
+			flex-basis: toRem(280);
+		}
 	}
 	// .bottom-library__card-slide
 	&__card-slide {
+		height: 100%;
 	}
 	// .bottom-library__link
 	&__link {
@@ -891,6 +1367,15 @@
 	}
 	// .footer-library__link
 	&__link {
+		@media (min-width: $tablet) {
+			opacity: 0;
+			transition:
+				opacity 0.4s 1.7s,
+				background-color 0.5s;
+			.--watch & {
+				opacity: 1;
+			}
+		}
 		&:not(:last-child) {
 			margin-bottom: toRem(16);
 		}
@@ -901,6 +1386,13 @@
 		font-weight: 500;
 		line-height: 1.56;
 		letter-spacing: toRem(0.08);
+		@media (min-width: $mobile) {
+			opacity: 0;
+			transition: opacity 0.4s 1.9s;
+			.--watch & {
+				opacity: 1;
+			}
+		}
 		&::before {
 			content: "";
 			flex-shrink: 0;
@@ -1299,7 +1791,8 @@
 				width: percent(165, $containerWidth);
 				top: percent(25, 659);
 				left: toRem(-15);
-				animation: move-up-down 1.1s infinite ease-in-out alternate;
+				will-change: transform;
+				animation: move-up-down 2s infinite ease-in-out;
 				@media (max-width: $pc) {
 					left: toRem(-10);
 				}
@@ -1314,11 +1807,12 @@
 }
 
 @keyframes move-up-down {
-	0% {
-		transform: translateY(toRem(-5));
-	}
+	0%,
 	100% {
-		transform: translateY(toRem(5));
+		transform: translateY(-3%);
+	}
+	50% {
+		transform: translateY(3%);
 	}
 }
 
