@@ -228,7 +228,7 @@ function initWatcher(matches) {
 	const options = {
 		root: null,
 		rootMargin: '0px 0px 0px 0px',
-		threshold: '0.5'
+		threshold: '0.4'
 	}
 	const observer = new IntersectionObserver(addClassWatchingSection, options)
 	if (matches)
