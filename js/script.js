@@ -1,11 +1,9 @@
 "use strict"
 
 window.addEventListener("load", windowLoaded)
-
+const mediaMobile = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
 function windowLoaded() {
-
 	document.addEventListener("click", documentActions)
-	const mediaMobile = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
 	mediaMobile.addEventListener('change', e => initWatcher(e.matches))
 
 	// inits modules
@@ -23,10 +21,32 @@ function windowLoaded() {
 			},
 			clickable: true
 		},
-		slidesPerView: 'auto',
-		slidesPerGroup: 3,
-		speed: 800,
-		spaceBetween: 30,
+		speed: 600,
+		spaceBetween: 20,
+		breakpoints: {
+			320: {
+				slidesPerView: 1.05,
+				slidesPerGroup: 1,
+			},
+			480: {
+				slidesPerView: 1.7,
+				slidesPerGroup: 1,
+			},
+			680: {
+				slidesPerView: 2.2,
+				slidesPerGroup: 2,
+			},
+			768: {
+				slidesPerView: 2.5,
+				slidesPerGroup: 2,
+			},
+			992: {
+				slidesPerView: 'auto',
+				slidesPerGroup: 3,
+				spaceBetween: 30,
+				speed: 800,
+			}
+		}
 	});
 	new Swiper('.bottom-library__slider--sheets', {
 		pagination: {
@@ -36,10 +56,32 @@ function windowLoaded() {
 			},
 			clickable: true
 		},
-		slidesPerView: 'auto',
-		slidesPerGroup: 3,
-		speed: 800,
-		spaceBetween: 30,
+		speed: 600,
+		spaceBetween: 20,
+		breakpoints: {
+			320: {
+				slidesPerView: 1.05,
+				slidesPerGroup: 1,
+			},
+			480: {
+				slidesPerView: 1.7,
+				slidesPerGroup: 1,
+			},
+			680: {
+				slidesPerView: 2.2,
+				slidesPerGroup: 2,
+			},
+			768: {
+				slidesPerView: 2.5,
+				slidesPerGroup: 2,
+			},
+			992: {
+				slidesPerView: 'auto',
+				slidesPerGroup: 3,
+				spaceBetween: 30,
+				speed: 800,
+			}
+		}
 	});
 }
 
@@ -75,7 +117,7 @@ function documentActions(e) {
 function initRating() {
 	const ratings = document.querySelectorAll(".rating")
 	if (ratings.length > 0) {
-		ratings.forEach((rating) => {
+		ratings.forEach(rating => {
 			const value = rating.dataset.rating ? parseFloat(rating.dataset.rating) : 0
 			const activeRating = rating.querySelector(".rating__active")
 			activeRating.style.width = `${value / 0.05}%`
@@ -205,19 +247,28 @@ function initTabs() {
 	})
 
 	toggleTabs()
+	tabBlocks[0].style.animation = 'none'
+	if (mediaMobile.matches) {
+		tabBlocks[0].style.transform = 'translate(-12%, 0)'
+		tabBlocks[0].style.opacity = '0'
+		tabBlocks[0].style.transitionProperty = 'transform, opacity'
+		tabBlocks[0].style.transitionDuration = '0.6s, 0.6s'
+	}
 
 	function toggleTabs(currentIndex = 0) {
 		buttons.forEach((button, i) => {
 			if (i !== currentIndex) {
+				tabBlocks[i].style.display = 'none'
 				button.classList.remove('--active')
 				tabBlocks[i].classList.remove('--active')
 				pagination[i].classList.remove('--active')
 			}
 		});
-
+		tabBlocks[currentIndex].style.display = 'block'
 		tabBlocks[currentIndex].classList.add('--active')
 		pagination[currentIndex].classList.add('--active')
 		buttons[currentIndex].classList.add('--active')
+		tabBlocks[currentIndex].style.removeProperty('animation')
 	}
 
 }
@@ -228,7 +279,7 @@ function initWatcher(matches) {
 	const options = {
 		root: null,
 		rootMargin: '0px 0px 0px 0px',
-		threshold: '0.4'
+		threshold: '0.5'
 	}
 	const observer = new IntersectionObserver(addClassWatchingSection, options)
 	if (matches)
@@ -242,6 +293,18 @@ function initWatcher(matches) {
 			if (entry.isIntersecting) {
 				target.classList.add('--watch')
 				observer.unobserve(entry.target)
+				if (target.classList.contains('library__bottom')) {
+					const activeTab = target.querySelector('.bottom-library__tab.--active')
+					if (!activeTab) return
+					activeTab.style.transform = 'translate(0, 0)'
+					activeTab.style.opacity = 1
+					setTimeout(() => {
+						activeTab.style.removeProperty('transform')
+						activeTab.style.removeProperty('opacity')
+						activeTab.style.removeProperty('transition-property')
+						activeTab.style.removeProperty('transition-duration')
+					}, 600);
+				}
 			}
 		})
 	}
