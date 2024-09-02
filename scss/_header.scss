@@ -8,16 +8,18 @@
 	box-shadow: 0 toRem(14) toRem(24) 0 rgba(0, 0, 0, 0.01);
 	// .header__container
 	&__container {
-		// min-height: toRem(75);
 		min-height: toRem(75);
 		padding-block: toRem(10);
 		display: flex;
 		align-items: center;
-		// column-gap: toRem(50);
+		transition: min-height 0.3s;
 		@include adaptiveValue("column-gap", 50, 30, 0, $containerWidth, 768);
 		@media (max-width: $mobile) {
 			justify-content: space-between;
 			min-height: toRem(57);
+		}
+		.--less & {
+			min-height: toRem(60);
 		}
 	}
 	// .header__logo
@@ -176,7 +178,6 @@
 		flex-shrink: 0;
 		width: toRem(32);
 		height: toRem(23);
-
 		span,
 		&::before,
 		&::after {
@@ -187,6 +188,7 @@
 			background-color: #fff;
 			background-color: $darkColor;
 			transition: all 0.3s;
+			will-change: transform;
 		}
 
 		&::before,

@@ -20,6 +20,15 @@
 	@media (max-width: $mobile) {
 		font-size: toRem(16);
 	}
+	a {
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(2);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
+	}
 }
 
 // Benefit =====================================================================
@@ -74,11 +83,18 @@
 	font-weight: 700;
 	line-height: 1.2;
 	border-radius: toRem(8);
-	transition: background-color 0.5s;
+	transition:
+		background-color 0.5s,
+		outline-color 0.3s;
 	text-align: center;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	outline: toRem(2) solid transparent;
+	outline-offset: toRem(3);
+	&:focus-visible {
+		outline-color: $activeColor;
+	}
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: $hoverColor;
@@ -90,6 +106,16 @@
 	// .link--icon
 	&--icon {
 		column-gap: toRem(7);
+		&::before {
+			content: "";
+			flex-shrink: 0;
+			margin-top: toRem(-1);
+			width: toRem(15);
+			height: toRem(15);
+			background: url("../img/icons/books.webp") 0 0 / 100% no-repeat;
+		}
+	}
+	&--bg-white {
 		background-color: #f0f0f2;
 		color: $darkColor;
 		@media (any-hover: hover) {
@@ -100,13 +126,20 @@
 		&:active {
 			background-color: #b7b7b7;
 		}
-		&::before {
-			content: "";
-			flex-shrink: 0;
-			margin-top: toRem(-1);
-			width: toRem(15);
-			height: toRem(15);
-			background: url("../img/icons/books.png") 0 0 / 100% no-repeat;
+		&:focus-visible {
+			outline-color: #fff;
+		}
+	}
+	&--bg-grey {
+		background-color: #f0f0f2;
+		color: $darkColor;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #dcdcdc;
+			}
+		}
+		&:active {
+			background-color: #b7b7b7;
 		}
 	}
 	@media (max-width: $mobileSmall) {
@@ -124,18 +157,42 @@
 	flex-direction: column;
 	// .card-slide__image
 	&__image {
+		position: relative;
 		display: block;
 		overflow: hidden;
 		border-radius: toRem(12) toRem(12) 0 0;
+		outline: none;
+		aspect-ratio: 390 / 290;
+		background-color: lightgray;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			border-radius: toRem(12) toRem(12) 0 0;
+			border: toRem(3) solid $activeColor;
+			pointer-events: none;
+			z-index: 1;
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
 		img {
 			width: 100%;
+			height: 100%;
 			object-fit: cover;
-			aspect-ratio: 390 / 290;
 			transition: transform 0.3s;
+			z-index: 0;
 			@media (any-hover: hover) {
 				&:hover {
 					transform: scale(1.03);
 				}
+			}
+		}
+		&:focus-visible {
+			&::before {
+				opacity: 1;
 			}
 		}
 	}
@@ -165,6 +222,15 @@
 		}
 		@media (max-width: toEm(1120)) {
 			font-size: toRem(24);
+		}
+		a {
+			outline: toRem(2) solid transparent;
+			outline-offset: toRem(2);
+			transition: outline-color 0.3s;
+			border-radius: toRem(4);
+			&:focus-visible {
+				outline-color: $activeColor;
+			}
 		}
 	}
 	// .card-slide__key-words
@@ -199,7 +265,15 @@
 		line-height: 1.5;
 		color: $purpleColor;
 		position: relative;
-		transition: color 0.3s;
+		transition:
+			color 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		@media (any-hover: hover) {
 			&::before {
 				content: "";
@@ -348,7 +422,7 @@
 	&__item {
 		outline: toRem(2) solid transparent;
 		outline-offset: toRem(3);
-		border-radius: toRem(2);
+		border-radius: toRem(4);
 		height: toRem(40);
 		will-change: transform;
 		transition:
@@ -376,11 +450,11 @@
 
 // .form =====================================================================
 .form {
+	position: relative;
 	@media (min-width: $mobileSmall) {
 		display: flex;
 		align-items: flex-start;
 	}
-
 	// .form__input
 	&__input {
 		width: 100%;
@@ -392,12 +466,20 @@
 		font-weight: 600;
 		font-size: toRem(17);
 		border-radius: toRem(12) 0 0 toRem(12);
+		transition: outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(-5);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		&::placeholder {
 			color: #48555f;
 			transition: opacity 0.3s;
 		}
-		&:focus::placeholder {
-			opacity: 0;
+		&:focus {
+			&::placeholder {
+				opacity: 0;
+			}
 		}
 		@media (max-width: $mobile) {
 			height: toRem(48);
@@ -421,13 +503,20 @@
 		justify-content: center;
 		column-gap: toRem(5);
 		text-transform: capitalize;
-		transition: background-color 0.3s;
+		transition:
+			background-color 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(-5);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		&::before {
 			content: "";
 			flex-shrink: 0;
 			width: toRem(16);
 			height: toRem(15);
-			background: url("../img/icons/rocket.png") 0 0 / 100% no-repeat;
+			background: url("../img/icons/rocket.webp") 0 0 / 100% no-repeat;
 		}
 		@media (any-hover: hover) {
 			&:hover {
@@ -479,7 +568,15 @@
 		align-items: center;
 		column-gap: toRem(25);
 		width: 100%;
-		transition: color 0.3s;
+		transition:
+			color 0.3s,
+			outline-color 0.3s;
+		outline-offset: toRem(4);
+		border-radius: toRem(4);
+		outline: toRem(2) solid transparent;
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		&.--active {
 			color: $hoverColor;
 		}

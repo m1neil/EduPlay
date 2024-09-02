@@ -41,7 +41,7 @@
 		@include adaptiveValue("font-size", 64, 40, 0, $containerWidth, 790);
 		font-weight: 700;
 		line-height: 1.21;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translateX(-30%);
 			transition:
 				transform 0.8s,
@@ -67,7 +67,7 @@
 		font-size: toRem(20);
 		font-weight: 500;
 		line-height: 1.6;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translateX(-30%);
 			opacity: 0;
 			transition:
@@ -94,13 +94,14 @@
 	}
 	// .promo__link
 	&__link {
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			&:first-child {
 				transform: translate(toRem(-30), 0);
 				transition:
 					transform 0.4s 0.6s,
 					opacity 0.4s 0.6s,
-					background-color 0.5s 0s;
+					background-color 0.5s 0s,
+					outline-color 0.3s;
 				opacity: 0;
 				.--watch & {
 					transform: translate(0, 0);
@@ -113,7 +114,8 @@
 				transition:
 					transform 0.4s 0.7s,
 					opacity 0.4s 0.7s,
-					background-color 0.5s 0s;
+					background-color 0.5s 0s,
+					outline-color 0.3s;
 				.--watch & {
 					transform: translate(0, 0);
 					opacity: 1;
@@ -132,7 +134,7 @@
 		position: relative;
 		flex-basis: toRem(569);
 		padding-block: toRem(22) 6.8%;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(42%, 0);
 			opacity: 0;
 			transition:
@@ -159,7 +161,7 @@
 			height: 100%;
 			top: 0;
 			right: percent(-73, 569);
-			background: url("../img/promo/grid.png") 0 0 / 100% no-repeat;
+			background: url("../img/promo/grid.webp") 0 0 / 100% no-repeat;
 		}
 		@media (max-width: $mobile) {
 			max-width: toRem(576);
@@ -180,7 +182,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 	column-gap: toRem(8);
-	@media (min-width: $mobile) {
+	@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 		will-change: transform;
 		transform: translate(toRem(25), toRem(-10)) scale(1.1);
 		opacity: 0;
@@ -211,7 +213,7 @@
 	// .evaluation-promo__text
 	&__text {
 		line-height: 1.71;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			span {
 				display: inline-block;
 				opacity: 0;
@@ -239,7 +241,7 @@
 	@include adaptiveValue("height", 173, 58, 0, $containerWidth, 768);
 	top: 0;
 	left: toRem(11);
-	@media (min-width: $mobile) {
+	@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 		transform: rotate(-10deg) scale(1.4);
 		opacity: 0;
 		will-change: transform;
@@ -360,7 +362,7 @@
 	// .benefits__item
 	&__item {
 		flex: 1 1 toRem(240);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			overflow: hidden;
 			position: relative;
 			&::before,
@@ -451,15 +453,23 @@
 			}
 		}
 	}
+
+	@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
+		&__content:has(.application__title.--watch) + &__picture {
+			animation: show-phone 0.8s ease forwards 0.6s;
+		}
+	}
+
 	// .application__title
 	&__title {
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-30%, 0);
 			transition:
 				transform 0.6s,
 				opacity 0.6s;
 			opacity: 0;
-			.--watch & {
+			.--watch &,
+			&.--watch {
 				transform: translate(0, 0);
 				opacity: 1;
 			}
@@ -474,13 +484,14 @@
 	// .application__text
 	&__text {
 		margin-bottom: toRem(32);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-30%, 0);
 			transition:
 				transform 0.6s 0.2s,
 				opacity 0.6s 0.2s;
 			opacity: 0;
-			.--watch & {
+			.--watch &,
+			&.--watch {
 				transform: translate(0, 0);
 				opacity: 1;
 			}
@@ -505,7 +516,7 @@
 		color: $darkColor;
 		line-height: 1.6;
 		font-weight: 600;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transition:
 				transform 0.3s,
 				opacity 0.3s;
@@ -513,7 +524,7 @@
 			opacity: 0;
 			@for $index from 1 through 6 {
 				&:nth-child(#{$index}) {
-					$delay: ($index - 1) * 0.18 + 0.5;
+					$delay: ($index - 1) * 0.18 + 0.2;
 					transition-delay: #{$delay}s;
 				}
 			}
@@ -555,27 +566,29 @@
 	}
 	// .application__apps
 	&__apps {
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			.apps__item {
 				opacity: 0;
 				&:first-child {
 					transition:
-						opacity 0.5s 1.6s,
-						transform 0.5s;
+						opacity 0.5s 0.4s,
+						transform 0.5s,
+						outline-color 0.3s;
 				}
 				&:last-child {
 					transition:
-						opacity 0.5s 1.69s,
-						transform 0.5s;
-				}
-				.--watch & {
-					opacity: 1;
+						opacity 0.5s 0.5s,
+						transform 0.5s,
+						outline-color 0.3s;
 				}
 				@media (any-hover: hover) {
 					&:hover {
 						transform: scale(1.04);
 					}
 				}
+			}
+			&.--watch .apps__item {
+				opacity: 1;
 			}
 		}
 		@media (max-width: toEm(699.98)) {
@@ -595,11 +608,8 @@
 		position: relative;
 		flex: 0 1 toRem(452);
 		padding-right: toRem(43);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
-			.--watch & {
-				animation: show-phone 0.8s ease forwards 0.6s;
-			}
 		}
 		@media (max-width: $tablet) {
 			padding-right: 0;
@@ -718,7 +728,7 @@
 	overflow: hidden;
 	background-color: #fff;
 	background:
-		url("../img/gradient-bg.png") center / cover no-repeat,
+		url("../img/gradient-bg.webp") center / cover no-repeat,
 		#914cff;
 	// .explorer-courses__container
 	&__container {
@@ -755,7 +765,7 @@
 	// .explorer-courses__title
 	&__title {
 		color: #fff;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-30%, 0);
 			opacity: 0;
 			transition:
@@ -770,7 +780,7 @@
 	// .explorer-courses__text
 	&__text {
 		color: #fff;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-30%, 0);
 			opacity: 0;
 			transition:
@@ -785,16 +795,16 @@
 	// .explorer-courses__link
 	&__link {
 		&::before {
-			background-image: url("../img/icons/hat.png");
+			background-image: url("../img/icons/hat.webp");
 		}
-		background-color: #fff;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-30%, 0);
 			opacity: 0;
 			transition:
 				transform 0.3s 0.5s,
 				opacity 0.3s 0.5s,
-				background-color 0.5s 0s;
+				background-color 0.5s 0s,
+				outline-color 0.3s;
 			.--watch & {
 				transform: translate(0, 0);
 				opacity: 1;
@@ -811,10 +821,7 @@
 	&__picture {
 		position: relative;
 		z-index: 1;
-		@media (min-width: $pc) {
-			padding-right: toRem(45);
-		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(30%, 0);
 			opacity: 0;
 			transition:
@@ -829,12 +836,20 @@
 			flex: 0 1 toRem(512);
 			min-width: toRem(300);
 		}
-		@media (max-width: toEm(699.98)) {
-			text-align: center;
+		@media (min-width: $tablet) {
+			padding-right: toRem(45);
 		}
-
+		@media (max-width: toEm(699.98)) {
+			justify-self: center;
+		}
 		img {
-			max-width: 100%;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			aspect-ratio: 467 / 447;
+			@media (max-width: toEm(699.98)) {
+				max-width: toRem(467);
+			}
 		}
 	}
 	// .explorer-courses__decoration
@@ -851,7 +866,7 @@
 	@media (max-width: $mobile) {
 		padding-block: toRem(40);
 	}
-	background: url("../img/library/texture-bg.jpg") center / cover no-repeat;
+	background: url("../img/library/texture-bg.webp") center / cover no-repeat;
 	> * {
 		margin-block-end: toRem(60);
 		@media (max-width: $tablet) {
@@ -908,7 +923,7 @@
 					width: percent(108, 985);
 					top: toRem(105);
 					left: toRem(-170);
-					@media (min-width: $mobile) {
+					@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 						transform: scale(0) rotate(-35deg);
 						transition: transform 0.5s 0.17s;
 						.--watch & {
@@ -920,7 +935,7 @@
 					width: percent(136, 985);
 					top: toRem(157);
 					right: toRem(-170);
-					@media (min-width: $mobile) {
+					@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 						transform: scale(0.5);
 						opacity: 0;
 						transition:
@@ -944,7 +959,7 @@
 				margin-bottom: toRem(32);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s;
 			.--watch & {
@@ -996,7 +1011,7 @@
 		&:last-child {
 			padding-inline-end: 0;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transition:
 				transform 0.5s,
 				opacity 0.2s,
@@ -1074,10 +1089,10 @@
 				transform: translate(0, toRem(-3));
 				inline-size: toEm(40, 36);
 				block-size: toEm(40, 36);
-				background: url("../img/icons/rocket.png") 0 0 / 100% no-repeat;
+				background: url("../img/icons/rocket.webp") 0 0 / 100% no-repeat;
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s;
 			.--watch & {
@@ -1094,7 +1109,7 @@
 		mark {
 			background-color: #bffbff;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s 0.2s;
 			.--watch & {
@@ -1132,10 +1147,9 @@
 		@media (min-width: $tablet) {
 			padding-inline-start: toRem(23);
 			flex: 0 0 toRem(464);
-			align-items: center;
 			border-inline-start: toRem(1) solid transparent;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transform: scale(0.5);
 			transition:
@@ -1161,6 +1175,12 @@
 		flex: 0 1 toRem(220);
 		padding-block: toRem(13);
 		padding-inline: toRem(16);
+		outline: toRem(2) solid transparent;
+		transition: outline-color 0.3s;
+		outline-offset: toRem(2);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		&::before {
 			content: "";
 			position: absolute;
@@ -1263,7 +1283,6 @@
 		justify-content: right;
 		column-gap: toRem(16);
 		display: none;
-
 		&.--active {
 			display: flex;
 		}
@@ -1282,6 +1301,11 @@
 		opacity: 1;
 		background-color: transparent;
 		border-radius: 50%;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		&:focus-visible {
+			outline-color: $activeColor;
+		}
 		@media (max-width: toEm(699)) {
 			flex-basis: toRem(29);
 			height: toRem(29);
@@ -1346,12 +1370,13 @@
 				}
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transform: scale(0.5);
 			transition:
 				transform 0.5s 0.4s,
-				opacity 0.5s 0.4s;
+				opacity 0.5s 0.4s,
+				outline-color 0.3s;
 			.--watch & {
 				opacity: 1;
 				transform: scale(1);
@@ -1449,11 +1474,12 @@
 	}
 	// .footer-library__link
 	&__link {
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition:
 				opacity 0.4s,
-				background-color 0.5s;
+				background-color 0.5s,
+				outline-color 0.3s;
 			.--watch & {
 				opacity: 1;
 			}
@@ -1468,7 +1494,7 @@
 		font-weight: 500;
 		line-height: 1.56;
 		letter-spacing: toRem(0.08);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.4s 0.2s;
 			.--watch & {
@@ -1486,6 +1512,20 @@
 		}
 		a {
 			text-decoration: underline;
+			outline: toRem(2) solid transparent;
+			outline-offset: toRem(1);
+			transition:
+				outline-color 0.3s,
+				color 0.3s;
+			border-radius: toRem(2);
+			@media (any-hover: hover) {
+				&:hover {
+					color: $activeColor;
+				}
+			}
+			&:focus-visible {
+				outline-color: $activeColor;
+			}
 		}
 	}
 }
@@ -1645,7 +1685,7 @@
 				margin-bottom: toRem(30);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s;
 			.--watch & {
@@ -1680,7 +1720,7 @@
 		img {
 			max-width: 100%;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transform: scale(0.5);
 			@for $index from 1 through 7 {
@@ -1704,7 +1744,7 @@
 .newsletter {
 	padding-block: toRem(40);
 	background:
-		url("../img/gradient-bg.png") center / cover no-repeat,
+		url("../img/gradient-bg.webp") center / cover no-repeat,
 		$purpleColor;
 	color: #fff;
 	@media (max-width: $mobileSmall) {
@@ -1739,7 +1779,7 @@
 		font-size: toRem(32);
 		font-weight: 700;
 		line-height: 1.28;
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-10%, 0);
 			opacity: 0;
 			transition:
@@ -1770,13 +1810,13 @@
 				height: toRem(17);
 			}
 			&.icon-star::after {
-				background: url("../img/icons/star.png") 0 0 / 100% no-repeat;
+				background: url("../img/icons/star.webp") 0 0 / 100% no-repeat;
 			}
 			&.icon-rocket::after {
-				background: url("../img/icons/rocket.png") 0 0 / 100% no-repeat;
+				background: url("../img/icons/rocket.webp") 0 0 / 100% no-repeat;
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(-10%, 0);
 			opacity: 0;
 			transition:
@@ -1792,7 +1832,7 @@
 	&__form {
 		flex-basis: toRem(570);
 		max-width: toRem(570);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(20%, 0);
 			opacity: 0;
 			transition:
@@ -1832,7 +1872,7 @@
 				margin-bottom: toRem(16);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s;
 			.--watch & {
@@ -1874,7 +1914,7 @@
 				margin-bottom: toRem(32);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			transition: opacity 0.5s 0.2s;
 			.--watch & {
@@ -1909,7 +1949,7 @@
 				margin-bottom: toRem(20);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transition:
 				transform 0.5s,
 				opacity 0.5s;
@@ -1933,19 +1973,21 @@
 		@media (max-width: toEm(575)) {
 			column-gap: toRem(10);
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			.apps__item {
 				opacity: 0;
 
 				&:first-child {
 					transition:
 						opacity 0.5s 1s,
-						transform 0.5s;
+						transform 0.5s,
+						outline-color 0.3s;
 				}
 				&:last-child {
 					transition:
 						opacity 0.5s 1.09s,
-						transform 0.5s;
+						transform 0.5s,
+						outline-color 0.3s;
 				}
 				.--watch & {
 					opacity: 1;
@@ -1985,7 +2027,7 @@
 				@media (max-width: $pc) {
 					left: toRem(-10);
 				}
-				@media (min-width: $mobile) {
+				@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 					transform: scale(0.5) translateY(-3%) rotate(-45deg);
 					transition:
 						transform 0.5s,
@@ -2002,14 +2044,16 @@
 				width: percent(250, $containerWidth);
 				top: percent(-87, 659);
 				right: toRem(-45);
-				transform: scale(0.5);
-				transition:
-					transform 0.5s 0.2s,
-					opacity 0.5s 0.2s;
-				opacity: 0;
-				.--watch & {
-					transform: scale(1);
-					opacity: 1;
+				@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
+					transform: scale(0.5);
+					transition:
+						transform 0.5s 0.2s,
+						opacity 0.5s 0.2s;
+					opacity: 0;
+					.--watch & {
+						transform: scale(1);
+						opacity: 1;
+					}
 				}
 			}
 		}
@@ -2049,7 +2093,7 @@
 		@media (max-width: $mobile) {
 			margin-bottom: toRem(38);
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transition:
 				opacity 0.5s,
 				transform 0.5s;
@@ -2075,7 +2119,7 @@
 				margin-bottom: toRem(25);
 			}
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			opacity: 0;
 			.--watch & {
 				animation: show-spoller 0.5s forwards;
@@ -2109,6 +2153,7 @@
 		overflow: hidden;
 		@media (min-width: $mobile) {
 			display: flex;
+			align-items: flex-start;
 			justify-content: space-between;
 			column-gap: toRem(40);
 			padding-block: toRem(90) toRem(120);
@@ -2126,8 +2171,15 @@
 			flex: 0 1 toRem(541);
 			text-align: center;
 		}
+		@media (max-width: $mobile) {
+			max-width: toRem(541);
+			justify-self: center;
+		}
 		img {
-			max-width: 100%;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			aspect-ratio: 541 / 373;
 		}
 		@media (max-width: $mobile) {
 			&:not(:last-child) {
@@ -2135,7 +2187,7 @@
 			}
 			text-align: center;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transition:
 				transform 0.5s 0.2s,
 				opacity 0.5s 0.2s;
@@ -2167,7 +2219,7 @@
 	// .try-free__title
 	&__title {
 		@include adaptiveValue("font-size", 48, 32, 0, $containerWidth, 479.98);
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(12%, 0);
 			opacity: 0;
 			transition:
@@ -2185,7 +2237,7 @@
 		@media (max-width: $mobile) {
 			margin-bottom: toRem(16);
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(12%, 0);
 			opacity: 0;
 			transition:
@@ -2205,13 +2257,14 @@
 		@media (max-width: $mobileSmall) {
 			display: block;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(12%, 0);
 			opacity: 0;
 			transition:
 				transform 0.5s 0.4s,
 				opacity 0.5s 0.4s,
-				background-color 0.5s;
+				background-color 0.5s,
+				outline-color 0.3s;
 			.--watch & {
 				opacity: 1;
 				transform: translate(0, 0);
@@ -2247,7 +2300,7 @@
 		img {
 			width: 100%;
 		}
-		@media (min-width: $mobile) {
+		@media (min-width: $mobile) and (orientation: portrait), (orientation: landscape) and (min-height: toEm(500)) {
 			transform: translate(0, 100%);
 			opacity: 0;
 			transition:

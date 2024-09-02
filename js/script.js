@@ -1,23 +1,58 @@
 "use strict"
 
 window.addEventListener("load", windowLoaded)
+
 const mediaMobile = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
+const mediaMobileHeight = window.matchMedia(`(min-height: ${500 / 16}em)`)
+const mediaOrientation = window.matchMedia('(orientation: portrait)')
 function windowLoaded() {
+
 	document.addEventListener("click", documentActions)
-	mediaMobile.addEventListener('change', e => initWatcher(e.matches))
+	mediaMobile.addEventListener('change', e => {
+		initWatcher(e.matches)
+		if (e.matches) {
+			window.addEventListener('scroll', changeHeaderHeight)
+			changeHeaderHeight()
+		} else {
+			window.removeEventListener('scroll', changeHeaderHeight)
+			header.classList.remove('--less')
+		}
+
+		if (e.matches && mediaOrientation.matches ||
+			!mediaOrientation.matches && mediaMobileHeight.matches)
+			initAnimateText()
+	})
+	const header = document.querySelector('header')
+	if (header && mediaMobile.matches) {
+		window.addEventListener('scroll', changeHeaderHeight)
+		changeHeaderHeight()
+	}
 
 	// inits modules
 	initRating()
 	initSpollers()
 	initTabs()
-	initAnimateText()
 	initWatcher(mediaMobile.matches)
+	if (mediaMobile.matches && mediaOrientation.matches ||
+		!mediaOrientation.matches && mediaMobileHeight.matches)
+		initAnimateText()
+
+	mediaOrientation.addEventListener('change', e => {
+		if (e.matches && mediaMobile.matches ||
+			!e.matches && mediaMobileHeight.matches
+		)
+			initAnimateText()
+
+		if (!e.matches && mediaMobile.matches && document.documentElement.classList.contains('menu-open')) {
+			document.documentElement.classList.remove('menu-open', 'lock')
+		}
+	})
 
 	new Swiper('.bottom-library__slider--games', {
 		pagination: {
 			el: '.pagination-library__item--games',
 			renderBullet: function (index, className) {
-				return `<button type="button" class="${className}"><span>${index + 1}</span></button>`;
+				return `<button type="button" aria-label="Go to slide №${index + 1}" class="${className}"><span>${index + 1}</span></button>`
 			},
 			clickable: true
 		},
@@ -52,7 +87,7 @@ function windowLoaded() {
 		pagination: {
 			el: '.pagination-library__item--sheets',
 			renderBullet: function (index, className) {
-				return `<button type="button" class="${className}"><span>${index + 1}</span></button>`;
+				return `<button type="button" aria-label="Go to slide №${index + 1}" class="${className}"><span>${index + 1}</span></button>`
 			},
 			clickable: true
 		},
@@ -83,6 +118,13 @@ function windowLoaded() {
 			}
 		}
 	});
+
+	function changeHeaderHeight() {
+		if (scrollY > 300 && !header.classList.contains('--less'))
+			header.classList.add('--less')
+		else if (scrollY < 300 && header.classList.contains('--less'))
+			header.classList.remove('--less')
+	}
 }
 
 function documentActions(e) {
@@ -246,13 +288,15 @@ function initTabs() {
 		}
 	})
 
-	toggleTabs()
-	tabBlocks[0].style.animation = 'none'
+	const activeIndexTab = sessionStorage.getItem('tabIndex') ?
+		parseInt(sessionStorage.getItem('tabIndex')) : 0
+	toggleTabs(activeIndexTab)
+	tabBlocks[activeIndexTab].style.animation = 'none'
 	if (mediaMobile.matches) {
-		tabBlocks[0].style.transform = 'translate(-12%, 0)'
-		tabBlocks[0].style.opacity = '0'
-		tabBlocks[0].style.transitionProperty = 'transform, opacity'
-		tabBlocks[0].style.transitionDuration = '0.6s, 0.6s'
+		tabBlocks[activeIndexTab].style.transform = 'translate(-12%, 0)'
+		tabBlocks[activeIndexTab].style.opacity = '0'
+		tabBlocks[activeIndexTab].style.transitionProperty = 'transform, opacity'
+		tabBlocks[activeIndexTab].style.transitionDuration = '0.6s, 0.6s'
 	}
 
 	function toggleTabs(currentIndex = 0) {
@@ -269,6 +313,7 @@ function initTabs() {
 		pagination[currentIndex].classList.add('--active')
 		buttons[currentIndex].classList.add('--active')
 		tabBlocks[currentIndex].style.removeProperty('animation')
+		sessionStorage.setItem('tabIndex', currentIndex)
 	}
 
 }
@@ -279,7 +324,7 @@ function initWatcher(matches) {
 	const options = {
 		root: null,
 		rootMargin: '0px 0px 0px 0px',
-		threshold: '0.5'
+		threshold: '0.6'
 	}
 	const observer = new IntersectionObserver(addClassWatchingSection, options)
 	if (matches)
@@ -327,8 +372,11 @@ function initAnimateText() {
 					startDelay + (duration * index)
 				return `<span style="transition-delay: ${delay / 1000}s; transition-duration: ${duration / 1000}s">${word}</span>`
 			})
-
-			text.innerHTML = words.join(' ')
+			text.style.display = 'flex'
+			text.style.flexWrap = 'wrap'
+			text.style.columnGap = `${5 / 16}rem`
+			text.innerHTML = words.join('')
 		})
 	}
 }
+
